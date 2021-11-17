@@ -1,0 +1,97 @@
+<div class="container-fluid bg-light">
+  <div class="row">
+    <div class="col-6"></div>
+    <div class="col-6">
+      <div class="row">
+        <div class="col-3">
+          <mat-form-field appearance="standard" class="language-dr">
+            <mat-select
+              [(value)]="selectedLanguage"
+              (selectionChange)="onLaguageChange($event)"
+            >
+              <mat-option *ngFor="let lang of languages" [value]="lang.id">
+                {{ lang.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div #editor id="editor" class="editor">{{ code }}</div>
+    </div>
+  </div>
+  <div class="row fixed-bottom bg-light">
+    <div class="col-6"></div>
+    <div class="col-6">
+      <div class="row io-container" *ngIf="showIOContainer">
+        <div class="col-11">
+          <mat-tab-group animationDuration="0ms">
+            <mat-tab label="Input">
+              <textarea
+                [(ngModel)]="input"
+                class="input-area m-2"
+                cols="83"
+                rows="7"
+              ></textarea>
+            </mat-tab>
+            <mat-tab label="Output">
+              <textarea
+                [(ngModel)]="output"
+                class="output-area m-2"
+                cols="85"
+                rows="6"
+                disabled
+              ></textarea>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+        <div class="col-1">
+          <i
+            (click)="toggleIOContainer()"
+            class="fa fa-chevron-down mt-3 p-1 cursor-pointer"
+          ></i>
+        </div>
+      </div>
+      <div class="row m-2">
+        <div class="col-6">
+          <button mat-button color="primary" (click)="toggleIOContainer()">
+            Console
+            <i class="fa fa-chevron-up console-icon"></i>
+          </button>
+          <ng-container *ngIf="isExecuting">
+            <div class="spinner-grow text-primary loading-icons" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-border loading-icons" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-success loading-icons" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </ng-container>
+        </div>
+        <div class="col-3">
+          <button
+            mat-raised-button
+            color="secondary"
+            class=""
+            (click)="run($event)"
+            [disabled]="isExecuting"
+          >
+            <i class="fa fa-play"></i>
+            COMPILE & RUN
+          </button>
+        </div>
+        <div class="col-2">
+          <button
+            mat-raised-button
+            color="accent"
+            class="submit-btn"
+            [disabled]="isExecuting"
+          >
+            <i class="fa fa-check-circle submit-icon"></i> SUBMIT
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
