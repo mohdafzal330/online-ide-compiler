@@ -9,6 +9,7 @@ import {
 import * as ace from 'ace-builds';
 import { Language } from 'src/app/models/LanguageModel';
 import { IdeService } from 'src/app/services/ide-services/ide.service';
+import { baseApiRootUrl } from 'src/app/shared/constants/http-config';
 @Component({
   selector: 'app-ide-environment',
   templateUrl: './ide-environment.component.html',
@@ -18,6 +19,7 @@ export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
   public code: string = ``;
   public input: string = ``;
   public output: any = '';
+  public status: number = 1;
   public languages: Language[] = [];
   public selectedLanguage: number = 0;
   public showIOContainer: boolean = false;
@@ -70,17 +72,15 @@ export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
       stdin: this.input,
       versionIndex: 3,
     };
-    this.httpCleint
-      .post('https://localhost:44356/weatherforecast', data)
-      .subscribe(
-        (result: any) => {
-          this.isExecuting = false;
-          this.output = result?.output;
-        },
-        (error: any): void => {
-          this.isExecuting = false;
-          this.output = 'Internal Server Error';
-        }
-      );
+    this.httpCleint.post(baseApiRootUrl + 'execute', data).subscribe(
+      (result: any) => {
+        this.isExecuting = false;
+        this.output = result?.output;
+      },
+      (error: any): void => {
+        this.isExecuting = false;
+        this.output = 'Internal Server Error';
+      }
+    );
   }
 }

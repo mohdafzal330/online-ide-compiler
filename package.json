@@ -1,6 +1,6 @@
 {
-  "name": "codeplanet",
-  "version": "0.0.0",
+  "name": "thecodeplanet",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
