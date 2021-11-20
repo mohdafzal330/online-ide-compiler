@@ -1,6 +1,7 @@
 export interface Language {
   name: string;
   id: number;
-  code?: string;
-  theme?: string;
+  defaultScript: string;
+  languageCode: string;
+  modeName: string;
 }

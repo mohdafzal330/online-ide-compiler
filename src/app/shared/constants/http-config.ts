@@ -1,5 +1,5 @@
 import { environment } from 'src/environments/environment';
 
 export const baseApiRootUrl = environment.production
-  ? 'http://thecodeplanet.in/api'
+  ? 'http://api.thecodeplanet.in/'
   : 'https://localhost:44356/';

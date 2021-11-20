@@ -16,16 +16,17 @@ import { baseApiRootUrl } from 'src/app/shared/constants/http-config';
   styleUrls: ['./ide-environment.component.scss'],
 })
 export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
-  public code: string = ``;
-  public input: string = ``;
+  public input: string = `8`;
   public output: any = '';
-  public status: number = 1;
+  public expectedOutput: string = '8\n7\n6\n5\n4\n3\n2\n1\n';
+  public statusCode: number = -1;
+  public status: string = '';
   public languages: Language[] = [];
-  public selectedLanguage: number = 0;
+  public selectedLanguage!: Language;
   public showIOContainer: boolean = false;
   public isExecuting: boolean = false;
   public aceEditor: any;
-  public langMode: string = 'ace/mode/java';
+  public selectedIOContainerTab: number = 0;
   public theme: string = 'ace/theme/tomorrow_night';
   @ViewChild('editor') private editor!: ElementRef<HTMLElement>;
   constructor(
@@ -37,50 +38,72 @@ export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
     ace.config.set('fontSize', '14px');
     this.aceEditor = ace.edit(this.editor.nativeElement);
     this.aceEditor.setTheme(this.theme);
-    this.aceEditor.session.setMode(this.langMode);
     this.aceEditor.setOptions({ fontSize: 17 });
-    this.aceEditor.session.setValue(this.code);
+
+    this.setEditorMode(this.selectedLanguage.modeName);
+    this.setCodeInEditor(this.selectedLanguage.defaultScript);
   }
   ngOnInit(): void {
     this.languages = this._ideService.getAllLanguages();
-    this.selectedLanguage = this.languages[0]?.id;
-    this.code = this._ideService.getLanguageDefaultCode(this.selectedLanguage);
-  }
-
-  public run(e: Event) {
-    this.showIOContainer = true;
-    this.isExecuting = true;
-    this.code = this.aceEditor.session.getValue();
-    this.execute(this.code);
+    this.selectedLanguage = this.languages[0];
   }
 
   public onLaguageChange(e: any): void {
     if (!e || !e.value) {
       return;
     }
-    this.code = this._ideService.getLanguageDefaultCode(e.value);
-    this.aceEditor?.session?.setValue(this.code);
+    this.setCodeInEditor(e.value?.defaultScript);
+    this.setEditorMode(e.value?.modeName);
   }
   public toggleIOContainer(): void {
     this.showIOContainer = !this.showIOContainer;
   }
+  public run(isCompile: boolean = true) {
+    this.showIOContainer = true;
+    this.selectedIOContainerTab = 1;
+    this.isExecuting = true;
+    this.execute(isCompile);
+  }
 
-  public execute(code: string) {
+  private execute(isCompile: boolean) {
     const data = {
-      script: code,
-      language: this._ideService.getLanguageCode(this.selectedLanguage),
-      stdin: this.input,
-      versionIndex: 3,
+      script: this.getCodeFromEditor(),
+      language: this.selectedLanguage.languageCode,
+      isCompile: isCompile,
+      testCase: {
+        input: this.input,
+        expectedOutPut: this.expectedOutput,
+      },
     };
     this.httpCleint.post(baseApiRootUrl + 'execute', data).subscribe(
       (result: any) => {
         this.isExecuting = false;
-        this.output = result?.output;
+        this.setStatus(result.status);
+        this.setStatusCode(result.statusCode);
+        this.setOutput(result?.output ?? result?.error);
       },
       (error: any): void => {
         this.isExecuting = false;
         this.output = 'Internal Server Error';
       }
     );
+  }
+  private getCodeFromEditor() {
+    return this.aceEditor?.session?.getValue() ?? '';
+  }
+  private setCodeInEditor(code: string | undefined) {
+    this.aceEditor?.session?.setValue(code);
+  }
+  private setEditorMode(modeName: string | undefined) {
+    this.aceEditor?.session?.setMode(modeName);
+  }
+  private setStatus(status: string) {
+    this.status = status;
+  }
+  private setStatusCode(statusCode: number) {
+    this.statusCode = statusCode;
+  }
+  private setOutput(status: string) {
+    this.output = status;
   }
 }

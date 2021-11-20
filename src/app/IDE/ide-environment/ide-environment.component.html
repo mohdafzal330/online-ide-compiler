@@ -1,6 +1,71 @@
 <div class="container-fluid bg-light">
   <div class="row">
-    <div class="col-6"></div>
+    <div class="col-6">
+      <h3><b>Recursion & Backtracking</b></h3>
+      <span
+        >90. Print numbers in decreasing order <br /><br />
+        <b>Note: </b>
+        Try to solve the question with Recursion, As compiler can't force you to
+        do so, but the sprit of the question is to get you understand the
+        concept of recursion</span
+      >
+      <br />
+      <br />
+      <p>
+        <b>Input format</b><br />
+        <br />
+        An Integer number will be provided to you
+      </p>
+      <p>
+        <b>Ouput format</b><br />
+        <br />
+        You are required to print the number in descreasing order
+      </p>
+      <br />
+      <p>
+        <b>Example 1</b><br />
+        <br />
+        If N is 5 then your output should be:
+        <!-- <pre>
+          5
+          4
+          3
+          2
+          1
+        </pre> -->
+        5 4 3 2 1
+      </p>
+      <p>
+        <b>Example 2</b><br />
+        <br />
+        If N is 10 then your output should be:
+        <!-- <pre>
+          5
+          4
+          3
+          2
+          1
+        </pre> -->
+        10 9 8 7 6 5 4 3 2 1
+      </p>
+      <br />
+      <p>
+        <b>Constrains</b><br />
+        <br />
+        1 <= N <= 10^5
+      </p>
+      <br />
+      <p>
+        <b>Test case 1</b><br />
+        <br />
+        8 10 9 8 7 6 5 4 3 2 1
+      </p>
+      <p>
+        <b>Expected output</b><br />
+        <br />
+        8 7 6 5 4 3 2 1
+      </p>
+    </div>
     <div class="col-6">
       <div class="row">
         <div class="col-3">
@@ -9,14 +74,16 @@
               [(value)]="selectedLanguage"
               (selectionChange)="onLaguageChange($event)"
             >
-              <mat-option *ngFor="let lang of languages" [value]="lang.id">
+              <mat-option *ngFor="let lang of languages" [value]="lang">
                 {{ lang.name }}
               </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
       </div>
-      <div #editor id="editor" class="editor">{{ code }}</div>
+      <div class="mainEditor">
+        <div #editor id="editor" class="editor"></div>
+      </div>
     </div>
   </div>
   <div class="row fixed-bottom bg-light">
@@ -24,7 +91,10 @@
     <div class="col-6">
       <div class="row io-container" *ngIf="showIOContainer">
         <div class="col-11">
-          <mat-tab-group animationDuration="0ms">
+          <mat-tab-group
+            animationDuration="0ms"
+            [(selectedIndex)]="selectedIOContainerTab"
+          >
             <mat-tab label="INPUT">
               <textarea
                 [(ngModel)]="input"
@@ -34,13 +104,9 @@
               ></textarea>
             </mat-tab>
             <mat-tab label="OUTPUT">
-              <textarea
-                [(ngModel)]="output"
-                class="output-area m-2"
-                cols="85"
-                rows="6"
-                disabled
-              ></textarea>
+              <textarea class="output-area m-2" cols="85" rows="6" disabled>{{
+                output
+              }}</textarea>
             </mat-tab>
           </mat-tab-group>
         </div>
@@ -72,20 +138,19 @@
               <span class="sr-only">Loading...</span>
             </div>
           </ng-container>
-          <ng-container *ngIf="status == 1">
-            <span class="green m-2 font-16">
-              <i class="fa fa-check-circle m-1"></i>Correct Answer</span
-            >
-          </ng-container>
-          <ng-container *ngIf="status == 2">
-            <span class="text-danger m-2 font-16">
-              <i class="fa fa-times-circle m-1"></i>Wrong Answer</span
-            >
-          </ng-container>
-          <ng-container *ngIf="status == 3">
-            <span class="text-danger m-2 font-16">
-              <i class="fa fa-times-circle m-1"></i>Time limit exceeded</span
-            >
+          <ng-container *ngIf="!isExecuting">
+            <span *ngIf="statusCode == 0" class="text-danger m-2 font-16">
+              <i class="fa fa-times-circle m-1"></i>
+              {{ status }}
+            </span>
+            <span *ngIf="statusCode == 1" class="green m-2 font-16">
+              <i class="fa fa-check-circle m-1"></i>
+              {{ status }}
+            </span>
+            <span *ngIf="statusCode == 2" class="green m-2 font-16">
+              <i class="fa fa-check m-1"></i>
+              {{ status }}
+            </span>
           </ng-container>
         </div>
         <div class="col-3">
@@ -93,7 +158,7 @@
             mat-raised-button
             color="secondary"
             class=""
-            (click)="run($event)"
+            (click)="run()"
             [disabled]="isExecuting"
           >
             <i class="fa fa-play"></i>
@@ -106,6 +171,7 @@
             color="accent"
             class="submit-btn"
             [disabled]="isExecuting"
+            (click)="run(false)"
           >
             <i class="fa fa-check-circle submit-icon"></i> SUBMIT
           </button>

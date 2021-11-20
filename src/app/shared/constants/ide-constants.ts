@@ -19,29 +19,51 @@ export enum AllLanguages {
 
 export const DefaultLanguageCodes = {
   java: `import java.util.*;
+
 public class Main{
+
   public static void main(String[] args){
+
     //  your code goes here
-    System.out.println("Hello world");
+    System.out.println("The Code Planet");
+
   }
+
 }`,
   cpp: `#include <iostream>
 #include <math.h>
+
 using namespace std;
 
 int main(int argc, char **argv){
+
     //write your code here
+    cout<<"The Code Planet";
+
 }`,
-  python: `//your python code here`,
+  python: ` //your python code here
+
+print("The code planet")`,
   csharp: `using System;
+
 class Program
 {
     static void Main() {
+
         //write your code here
+        Console.WriteLine("The Code Planet");
     }
+
 }`,
-  javascript: `//write your javascript code here`,
-  php: `//write php code here`,
+  javascript: `//write your javascript code here
+
+  console.log('The Code Planet')`,
+  php: `<?php
+
+  //write php code here
+  echo "The Code Planet";
+
+?>`,
   ruby: `//write your ruby code here`,
   perl: `//write your perl code here`,
 };
