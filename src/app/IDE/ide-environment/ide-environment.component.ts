@@ -16,9 +16,10 @@ import { baseApiRootUrl } from 'src/app/shared/constants/http-config';
   styleUrls: ['./ide-environment.component.scss'],
 })
 export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
-  public input: string = `8`;
+  public input: string = ``;
+  public originalinput: string = `5`;
   public output: any = '';
-  public expectedOutput: string = '8\n7\n6\n5\n4\n3\n2\n1\n';
+  public expectedOutput: string = '5\n4\n3\n2\n1\n';
   public statusCode: number = -1;
   public status: string = '';
   public languages: Language[] = [];
@@ -46,6 +47,7 @@ export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.languages = this._ideService.getAllLanguages();
     this.selectedLanguage = this.languages[0];
+    this.input = this.originalinput;
   }
 
   public onLaguageChange(e: any): void {
@@ -70,8 +72,9 @@ export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
       script: this.getCodeFromEditor(),
       language: this.selectedLanguage.languageCode,
       isCompile: isCompile,
+      stdin: this.input,
       testCase: {
-        input: this.input,
+        input: this.originalinput,
         expectedOutPut: this.expectedOutput,
       },
     };
