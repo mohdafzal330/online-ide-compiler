@@ -45,6 +45,13 @@
   margin-bottom: 5px;
 }
 .loading-icons {
-  // transform: scale(0.01);
   margin-left: 10px;
+}
+.content {
+  max-height: 626px;
+  overflow-y: scroll;
+  overflow-x: auto;
+}
+.solution {
+  padding: 15px;
 }

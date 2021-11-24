@@ -1,11 +1,21 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Language } from 'src/app/models/LanguageModel';
+import { baseApiRootUrl } from 'src/app/shared/constants/http-config';
 import {
   AllLanguages,
   DefaultLanguageCodes,
   LanguageCodes,
 } from './../../shared/constants/ide-constants';
 
+@Injectable()
 export class IdeService {
+  constructor(private client: HttpClient) {}
+
+  public run(data: any): any {
+    return this.client.post(baseApiRootUrl + 'execute', data);
+  }
+
   public getAllLanguages(): Language[] {
     return [
       {

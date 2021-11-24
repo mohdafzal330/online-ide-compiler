@@ -1,5 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">CodePlanet</a>
+  <div class="p-1">
+    <button class="btn btn-lg btn-light" (click)="drawer.toggle()">
+      <i class="fa fa-bars"></i>
+    </button>
+  </div>
+  <a class="navbar-brand" href="#">The Code Planet</a>
   <button
     class="navbar-toggler"
     type="button"
@@ -24,9 +29,14 @@
       <li class="nav-item active">
         <a
           class="nav-link"
-          href="https://www.youtube.com/playlist?list=PLRPprUJMLTPsVrGGwTeiIh2tKQ_VYmU9X"
+          href="https://www.youtube.com/c/CodePlanetOfficial"
           target="_blank"
           >About <span class="sr-only"></span
+        ></a>
+      </li>
+      <li class="nav-item" *ngIf="showAdmin">
+        <a class="nav-link" routerLink="/add-problem-statement"
+          >Admin <span class="sr-only"></span
         ></a>
       </li>
     </ul>

@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import {
   AfterViewInit,
   Component,
@@ -6,20 +5,20 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import * as ace from 'ace-builds';
 import { Language } from 'src/app/models/LanguageModel';
+import { ProblemDetail } from 'src/app/models/ProblemDetailMode';
+import { CommonService } from 'src/app/services/common-services/common.service';
 import { IdeService } from 'src/app/services/ide-services/ide.service';
-import { baseApiRootUrl } from 'src/app/shared/constants/http-config';
 @Component({
   selector: 'app-ide-environment',
   templateUrl: './ide-environment.component.html',
   styleUrls: ['./ide-environment.component.scss'],
 })
 export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
-  public input: string = ``;
-  public originalinput: string = `5`;
+  public originalinput: string = ``;
   public output: any = '';
-  public expectedOutput: string = '5\n4\n3\n2\n1\n';
   public statusCode: number = -1;
   public status: string = '';
   public languages: Language[] = [];
@@ -28,12 +27,26 @@ export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
   public isExecuting: boolean = false;
   public aceEditor: any;
   public selectedIOContainerTab: number = 0;
+  public problem!: ProblemDetail;
   public theme: string = 'ace/theme/tomorrow_night';
+
   @ViewChild('editor') private editor!: ElementRef<HTMLElement>;
+
   constructor(
-    private httpCleint: HttpClient,
-    private _ideService: IdeService
+    private _ideService: IdeService,
+    private _commonService: CommonService,
+    private _activatedRoute: ActivatedRoute
   ) {}
+
+  ngOnInit(): void {
+    this.languages = this._ideService.getAllLanguages();
+    this.selectedLanguage = this.languages[0];
+
+    this._activatedRoute.params.subscribe((params) => {
+      const problemId = params?.id ?? 11;
+      this.getProblemDetail(problemId);
+    });
+  }
 
   public ngAfterViewInit(): void {
     ace.config.set('fontSize', '14px');
@@ -44,10 +57,22 @@ export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
     this.setEditorMode(this.selectedLanguage.modeName);
     this.setCodeInEditor(this.selectedLanguage.defaultScript);
   }
-  ngOnInit(): void {
-    this.languages = this._ideService.getAllLanguages();
-    this.selectedLanguage = this.languages[0];
-    this.input = this.originalinput;
+
+  private getProblemDetail(problemId: number): void {
+    if (!problemId || problemId <= 0) {
+      return;
+    }
+    this._commonService.getProblemDetail(problemId).subscribe((result) => {
+      this.problem = result;
+      this.originalinput = this.problem?.sampleTestCase?.input;
+      this.setBrowserTitle(this.problem?.title);
+    });
+  }
+  private setBrowserTitle(title: string) {
+    if (!title) {
+      return;
+    }
+    document.title = title;
   }
 
   public onLaguageChange(e: any): void {
@@ -72,13 +97,13 @@ export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
       script: this.getCodeFromEditor(),
       language: this.selectedLanguage.languageCode,
       isCompile: isCompile,
-      stdin: this.input,
+      stdin: this.problem.sampleTestCase.input,
       testCase: {
         input: this.originalinput,
-        expectedOutPut: this.expectedOutput,
+        expectedOutPut: this.problem.sampleTestCase.expectedOutput,
       },
     };
-    this.httpCleint.post(baseApiRootUrl + 'execute', data).subscribe(
+    this._ideService.run(data).subscribe(
       (result: any) => {
         this.isExecuting = false;
         this.setStatus(result.status);

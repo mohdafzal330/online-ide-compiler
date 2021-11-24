@@ -23,10 +23,7 @@ export const DefaultLanguageCodes = {
 public class Main{
 
   public static void main(String[] args){
-
-    //  your code goes here
-    System.out.println("The Code Planet");
-
+    //write your code here
   }
 
 }`,

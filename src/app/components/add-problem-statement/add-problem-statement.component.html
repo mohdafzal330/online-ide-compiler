@@ -1,0 +1,143 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3">
+      <mat-form-field appearance="standard">
+        <mat-select
+          [(value)]="selectedModule"
+          (selectionChange)="onModuleChange($event)"
+        >
+          <mat-option *ngFor="let module of modules" [value]="module">
+            {{ module.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-3">
+      <mat-form-field appearance="standard">
+        <mat-select [(value)]="selectedTopic">
+          <mat-option *ngFor="let topic of topics" [value]="topic">
+            {{ topic.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <h3><strong>Problem Statement Preivew</strong></h3>
+      <hr />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <div class="row">
+        <div class="col-12">
+          <mat-form-field
+            class="example-full-width display-inline"
+            appearance="fill"
+          >
+            <mat-label>Problem title</mat-label>
+            <input
+              matInput
+              placeholder="Problem title"
+              value=""
+              #titleControl
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <mat-form-field
+            class="example-full-width display-inline"
+            appearance="fill"
+          >
+            <mat-label>Solution video embedded link</mat-label>
+            <input
+              matInput
+              placeholder="Solution video embedded link"
+              value=""
+              #solutionVideoControl
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div id="tinyEditor">
+            <editor
+              [(ngModel)]="content"
+              id="tinyEditor"
+              apiKey="wyjoz9o2fkf4oq0tx8pw0d2trtrz1vq001o3128f2ugbhhm3"
+              [init]="{
+                height: 600,
+                menubar: true,
+                plugins: [
+                  'advlist autolink lists link image charmap print preview anchor',
+                  'searchreplace visualblocks code fullscreen',
+                  'insertdatetime media table paste code help wordcount'
+                ],
+                toolbar:
+                  'undo redo | formatselect | bold italic backcolor | \
+          alignleft aligncent  er alignright alignjustify | \
+       bullist numlist outdent indent | removeformat | help'
+              }"
+            ></editor>
+          </div>
+        </div>
+      </div>
+
+      <br />
+      <div class="row">
+        <div class="col-12">
+          <mat-form-field
+            class="example-full-width display-inline"
+            appearance="fill"
+          >
+            <mat-label>Sample Input</mat-label>
+            <input
+              matInput
+              placeholder="Sample Input"
+              value=""
+              #sampleInputControl
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <mat-form-field
+            class="example-full-width display-inline"
+            appearance="fill"
+          >
+            <mat-label>Sample output</mat-label>
+            <input
+              matInput
+              placeholder="Sample Output"
+              value=""
+              #sampleOutputControl
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6"></div>
+        <div class="col-6">
+          <button
+            mat-raised-button
+            color="primary"
+            class="submit-btn float-right"
+            [disabled]="isLoading"
+            (click)="save()"
+          >
+            <i class="fa fa-check-circle submit-icon"></i> SAVE PROBLEM
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div>{{ content }}</div>
+      <div class="preview-prb-stmt" [innerHTML]="content"></div>
+    </div>
+  </div>
+  <br /><br />
+</div>

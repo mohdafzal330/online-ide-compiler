@@ -1,84 +1,37 @@
 <div class="container-fluid bg-light">
   <div class="row">
     <div class="col-6">
-      <h3><b>Recursion & Backtracking</b></h3>
-      <span
-        >90. Print numbers in decreasing order <br /><br />
-        <b>Note: </b>
-        Try to solve the question with Recursion, As compiler can't force you to
-        do so, but the sprit of the question is to get you understand the
-        concept of recursion</span
-      >
-      <br />
-      <br />
-      <p>
-        <b>Input format</b><br />
-        <br />
-        An Integer number will be provided to you
-      </p>
-      <p>
-        <b>Ouput format</b><br />
-        <br />
-        You are required to print the number in descreasing order
-      </p>
-      <br />
-      <p>
-        <b>Example 1</b><br />
-        <br />
-        If N is 5 then your output should be:
-        <!-- <pre>
-          5
-          4
-          3
-          2
-          1
-        </pre> -->
-        5 4 3 2 1
-      </p>
-      <p>
-        <b>Example 2</b><br />
-        <br />
-        If N is 10 then your output should be:
-        <!-- <pre>
-          5
-          4
-          3
-          2
-          1
-        </pre> -->
-        10 9 8 7 6 5 4 3 2 1
-      </p>
-      <br />
-      <p>
-        <b>Constrains</b><br />
-        <br />
-        1 <= N <= 10^5
-      </p>
-      <br />
-      <p>
-        <b>Test case 1</b><br />
-        <br />
-        5
-      </p>
-      <p>
-        <b>Expected output</b><br />
-        <br />
-        5 4 3 2 1
-      </p>
-      <br />
-      <p>
-        <b>Test case 2</b><br />
-        <br />
-        10
-      </p>
-      <p>
-        <b>Expected output</b><br />
-        <br />
-        10 9 8 7 6 5 4 3 2 1
-      </p>
-      <br />
-      <br />
-      <br />
+      <div class="row">
+        <div class="col-12">
+          <mat-tab-group animationDuration="0ms">
+            <mat-tab label="Problem Description">
+              <div class="content" *ngIf="problem">
+                <h3 class="mt-1">
+                  <b>{{ problem?.topicName }}</b>
+                </h3>
+                <div [innerHTML]="problem?.problemContent"></div>
+              </div>
+              <br />
+              <br />
+              <br />
+            </mat-tab>
+            <mat-tab label="Solution">
+              <div class="solution">
+                <h3>Do not give up too soon, Just try once more...</h3>
+
+                <!-- <div>{{ problem?.solutionVideoLink }}</div> -->
+
+                <h3>
+                  Watch complete solution here:
+                  <a [href]="problem?.solutionVideoLink" target="_blank">
+                    {{ problem?.title }}</a
+                  >
+                </h3>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
     </div>
     <div class="col-6">
       <div class="row">
@@ -111,11 +64,12 @@
           >
             <mat-tab label="INPUT">
               <textarea
-                [(ngModel)]="input"
+                [(ngModel)]="problem.sampleTestCase.input"
                 class="input-area m-2"
                 cols="83"
                 rows="7"
-              ></textarea>
+              >
+              </textarea>
             </mat-tab>
             <mat-tab label="OUTPUT">
               <textarea class="output-area m-2" cols="85" rows="6" disabled>{{

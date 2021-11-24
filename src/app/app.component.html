@@ -1,11 +1,29 @@
 <div class="container-fluid">
   <div class="row-fluid">
-    <app-navbar></app-navbar>
+    <div class="row">
+      <div class="col-12">
+        <mat-drawer-container class="example-container" [hasBackdrop]="false">
+          <mat-drawer #drawer [mode]="'push'" class="drawer-content">
+            <div class="header mt-1">
+              <h3 class="m-1 float-left">Module - Basic DSA</h3>
+              <span
+                class="drawer-close float-right cursor-pointer"
+                (click)="drawer.toggle()"
+                ><i class="fa fa-times-circle"></i
+              ></span>
+              <hr width="90%" class="mt-1" />
+            </div>
+            <div class="nav-tree">
+              <app-nav-tree></app-nav-tree>
+            </div>
+          </mat-drawer>
+          <mat-drawer-content>
+            <app-navbar [drawer]="drawer"></app-navbar>
+            <router-outlet></router-outlet>
+          </mat-drawer-content>
+        </mat-drawer-container>
+      </div>
+    </div>
   </div>
 </div>
 <br />
-<div class="container-fluid">
-  <app-ide-environment></app-ide-environment>
-</div>
-
-<router-outlet></router-outlet>
