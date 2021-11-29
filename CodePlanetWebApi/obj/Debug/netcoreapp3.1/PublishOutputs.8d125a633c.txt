@@ -1,0 +1,14 @@
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\publish\CodePlanetWebApi.exe
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\publish\appsettings.Development.json
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\publish\appsettings.json
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\publish\CodePlanetWebApi.dll
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\publish\CodePlanetWebApi.deps.json
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\publish\CodePlanetWebApi.runtimeconfig.json
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\publish\CodePlanetWebApi.pdb
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\publish\System.Net.Http.Formatting.dll
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\publish\Newtonsoft.Json.dll
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\publish\Newtonsoft.Json.Bson.dll
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\publish\CodePlanet.Infrastructure.dll
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\publish\Codeplanet.Models.dll
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\publish\CodePlanet.Infrastructure.pdb
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\publish\Codeplanet.Models.pdb

@@ -1,0 +1,14 @@
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanet.Infrastructure\bin\Release\netcoreapp3.1\CodePlanet.Infrastructure.deps.json
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanet.Infrastructure\bin\Release\netcoreapp3.1\CodePlanet.Infrastructure.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanet.Infrastructure\bin\Release\netcoreapp3.1\CodePlanet.Infrastructure.pdb
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanet.Infrastructure\bin\Release\netcoreapp3.1\Codeplanet.Common.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanet.Infrastructure\bin\Release\netcoreapp3.1\Codeplanet.Models.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanet.Infrastructure\bin\Release\netcoreapp3.1\Codeplanet.Common.pdb
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanet.Infrastructure\bin\Release\netcoreapp3.1\Codeplanet.Models.pdb
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanet.Infrastructure\obj\Release\netcoreapp3.1\CodePlanet.Infrastructure.csproj.AssemblyReference.cache
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanet.Infrastructure\obj\Release\netcoreapp3.1\CodePlanet.Infrastructure.AssemblyInfoInputs.cache
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanet.Infrastructure\obj\Release\netcoreapp3.1\CodePlanet.Infrastructure.AssemblyInfo.cs
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanet.Infrastructure\obj\Release\netcoreapp3.1\CodePlanet.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanet.Infrastructure\obj\Release\netcoreapp3.1\CodePlanet.Infrastructure.csproj.CopyComplete
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanet.Infrastructure\obj\Release\netcoreapp3.1\CodePlanet.Infrastructure.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanet.Infrastructure\obj\Release\netcoreapp3.1\CodePlanet.Infrastructure.pdb

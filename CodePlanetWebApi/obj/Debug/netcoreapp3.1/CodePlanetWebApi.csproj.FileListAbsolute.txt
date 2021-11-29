@@ -1,0 +1,99 @@
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\CodePlanetWebApi.exe
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\CodePlanetWebApi.deps.json
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\CodePlanetWebApi.runtimeconfig.json
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\CodePlanetWebApi.runtimeconfig.dev.json
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\CodePlanetWebApi.dll
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\CodePlanetWebApi.pdb
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\CodePlanetWebApi.csproj.AssemblyReference.cache
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\CodePlanetWebApi.AssemblyInfoInputs.cache
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\CodePlanetWebApi.AssemblyInfo.cs
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\CodePlanetWebApi.csproj.CoreCompileInputs.cache
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\CodePlanetWebApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\staticwebassets\CodePlanetWebApi.StaticWebAssets.Manifest.cache
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\staticwebassets\CodePlanetWebApi.StaticWebAssets.xml
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\scopedcss\bundle\CodePlanetWebApi.styles.css
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\CodePlanetWebApi.RazorTargetAssemblyInfo.cache
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\CodePlanetWebApi.dll
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\CodePlanetWebApi.pdb
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\CodePlanetWebApi.genruntimeconfig.cache
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\CodePlanetWebApi.csproj.CopyComplete
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\CodePlanet.Infrastructure.dll
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Codeplanet.Models.dll
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\CodePlanet.Infrastructure.pdb
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Codeplanet.Models.pdb
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\appsettings.json
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\CodePlanetWebApi.exe
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\CodePlanetWebApi.deps.json
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\CodePlanetWebApi.runtimeconfig.json
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\CodePlanetWebApi.runtimeconfig.dev.json
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\CodePlanetWebApi.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\CodePlanetWebApi.pdb
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Codeplanet.Common.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\CodePlanet.Infrastructure.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Codeplanet.Models.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\CodePlanet.Infrastructure.pdb
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Codeplanet.Models.pdb
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Codeplanet.Common.pdb
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\CodePlanetWebApi.csproj.AssemblyReference.cache
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\CodePlanetWebApi.AssemblyInfoInputs.cache
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\CodePlanetWebApi.AssemblyInfo.cs
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\CodePlanetWebApi.csproj.CoreCompileInputs.cache
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\CodePlanetWebApi.MvcApplicationPartsAssemblyInfo.cache
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\staticwebassets\CodePlanetWebApi.StaticWebAssets.Manifest.cache
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\staticwebassets\CodePlanetWebApi.StaticWebAssets.xml
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\scopedcss\bundle\CodePlanetWebApi.styles.css
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\CodePlanetWebApi.RazorTargetAssemblyInfo.cache
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\CodePlanetWebApi.csproj.CopyComplete
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\CodePlanetWebApi.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\CodePlanetWebApi.pdb
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\obj\Debug\netcoreapp3.1\CodePlanetWebApi.genruntimeconfig.cache
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Humanizer.dll
+D:\Internal\.Net Core\CodePlanetWebApi\CodePlanetWebApi\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll

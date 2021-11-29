@@ -1,0 +1,8 @@
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanet.Infrastructure\bin\Debug\netcoreapp3.1\publish\CodePlanet.Infrastructure.dll
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanet.Infrastructure\bin\Debug\netcoreapp3.1\publish\CodePlanet.Infrastructure.deps.json
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanet.Infrastructure\bin\Debug\netcoreapp3.1\publish\CodePlanet.Infrastructure.pdb
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanet.Infrastructure\bin\Debug\netcoreapp3.1\publish\System.Net.Http.Formatting.dll
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanet.Infrastructure\bin\Debug\netcoreapp3.1\publish\Newtonsoft.Json.dll
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanet.Infrastructure\bin\Debug\netcoreapp3.1\publish\Newtonsoft.Json.Bson.dll
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanet.Infrastructure\bin\Debug\netcoreapp3.1\publish\Codeplanet.Models.dll
+C:\Users\moabjal\source\repos\CodePlanetWebApi\CodePlanet.Infrastructure\bin\Debug\netcoreapp3.1\publish\Codeplanet.Models.pdb

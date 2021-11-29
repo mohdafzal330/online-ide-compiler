@@ -1,0 +1,21 @@
+C:\Users\moabjal\source\repos\CodePlanetWebApi\Codeplanet.Models\bin\Debug\netcoreapp3.1\Codeplanet.Models.deps.json
+C:\Users\moabjal\source\repos\CodePlanetWebApi\Codeplanet.Models\bin\Debug\netcoreapp3.1\Codeplanet.Models.dll
+C:\Users\moabjal\source\repos\CodePlanetWebApi\Codeplanet.Models\bin\Debug\netcoreapp3.1\Codeplanet.Models.pdb
+C:\Users\moabjal\source\repos\CodePlanetWebApi\Codeplanet.Models\obj\Debug\netcoreapp3.1\Codeplanet.Models.csproj.AssemblyReference.cache
+C:\Users\moabjal\source\repos\CodePlanetWebApi\Codeplanet.Models\obj\Debug\netcoreapp3.1\Codeplanet.Models.AssemblyInfoInputs.cache
+C:\Users\moabjal\source\repos\CodePlanetWebApi\Codeplanet.Models\obj\Debug\netcoreapp3.1\Codeplanet.Models.AssemblyInfo.cs
+C:\Users\moabjal\source\repos\CodePlanetWebApi\Codeplanet.Models\obj\Debug\netcoreapp3.1\Codeplanet.Models.csproj.CoreCompileInputs.cache
+C:\Users\moabjal\source\repos\CodePlanetWebApi\Codeplanet.Models\obj\Debug\netcoreapp3.1\Codeplanet.Models.dll
+C:\Users\moabjal\source\repos\CodePlanetWebApi\Codeplanet.Models\obj\Debug\netcoreapp3.1\Codeplanet.Models.pdb
+D:\Internal\.Net Core\CodePlanetWebApi\Codeplanet.Models\bin\Debug\netcoreapp3.1\Codeplanet.Models.deps.json
+D:\Internal\.Net Core\CodePlanetWebApi\Codeplanet.Models\bin\Debug\netcoreapp3.1\Codeplanet.Models.dll
+D:\Internal\.Net Core\CodePlanetWebApi\Codeplanet.Models\bin\Debug\netcoreapp3.1\Codeplanet.Models.pdb
+D:\Internal\.Net Core\CodePlanetWebApi\Codeplanet.Models\obj\Debug\netcoreapp3.1\Codeplanet.Models.csproj.AssemblyReference.cache
+D:\Internal\.Net Core\CodePlanetWebApi\Codeplanet.Models\obj\Debug\netcoreapp3.1\Codeplanet.Models.AssemblyInfoInputs.cache
+D:\Internal\.Net Core\CodePlanetWebApi\Codeplanet.Models\obj\Debug\netcoreapp3.1\Codeplanet.Models.AssemblyInfo.cs
+D:\Internal\.Net Core\CodePlanetWebApi\Codeplanet.Models\obj\Debug\netcoreapp3.1\Codeplanet.Models.csproj.CoreCompileInputs.cache
+D:\Internal\.Net Core\CodePlanetWebApi\Codeplanet.Models\obj\Debug\netcoreapp3.1\Codeplanet.Models.dll
+D:\Internal\.Net Core\CodePlanetWebApi\Codeplanet.Models\obj\Debug\netcoreapp3.1\Codeplanet.Models.pdb
+D:\Internal\.Net Core\CodePlanetWebApi\Codeplanet.Models\bin\Debug\netcoreapp3.1\Codeplanet.Models.runtimeconfig.json
+D:\Internal\.Net Core\CodePlanetWebApi\Codeplanet.Models\bin\Debug\netcoreapp3.1\Codeplanet.Models.runtimeconfig.dev.json
+D:\Internal\.Net Core\CodePlanetWebApi\Codeplanet.Models\obj\Debug\netcoreapp3.1\Codeplanet.Models.genruntimeconfig.cache

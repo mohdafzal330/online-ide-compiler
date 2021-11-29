@@ -1,0 +1,3 @@
+C:\Users\moabjal\source\repos\CodePlanetWebApi\Codeplanet.Models\bin\Debug\netcoreapp3.1\publish\Codeplanet.Models.dll
+C:\Users\moabjal\source\repos\CodePlanetWebApi\Codeplanet.Models\bin\Debug\netcoreapp3.1\publish\Codeplanet.Models.deps.json
+C:\Users\moabjal\source\repos\CodePlanetWebApi\Codeplanet.Models\bin\Debug\netcoreapp3.1\publish\Codeplanet.Models.pdb

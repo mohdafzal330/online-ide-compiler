@@ -1,0 +1,9 @@
+D:\Internal\.Net Core\CodePlanetWebApi\Codeplanet.Common\bin\Debug\netcoreapp3.1\Codeplanet.Common.deps.json
+D:\Internal\.Net Core\CodePlanetWebApi\Codeplanet.Common\bin\Debug\netcoreapp3.1\Codeplanet.Common.dll
+D:\Internal\.Net Core\CodePlanetWebApi\Codeplanet.Common\bin\Debug\netcoreapp3.1\Codeplanet.Common.pdb
+D:\Internal\.Net Core\CodePlanetWebApi\Codeplanet.Common\obj\Debug\netcoreapp3.1\Codeplanet.Common.csproj.AssemblyReference.cache
+D:\Internal\.Net Core\CodePlanetWebApi\Codeplanet.Common\obj\Debug\netcoreapp3.1\Codeplanet.Common.AssemblyInfoInputs.cache
+D:\Internal\.Net Core\CodePlanetWebApi\Codeplanet.Common\obj\Debug\netcoreapp3.1\Codeplanet.Common.AssemblyInfo.cs
+D:\Internal\.Net Core\CodePlanetWebApi\Codeplanet.Common\obj\Debug\netcoreapp3.1\Codeplanet.Common.csproj.CoreCompileInputs.cache
+D:\Internal\.Net Core\CodePlanetWebApi\Codeplanet.Common\obj\Debug\netcoreapp3.1\Codeplanet.Common.dll
+D:\Internal\.Net Core\CodePlanetWebApi\Codeplanet.Common\obj\Debug\netcoreapp3.1\Codeplanet.Common.pdb
