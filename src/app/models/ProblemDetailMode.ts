@@ -1,6 +1,7 @@
 import { TestCase } from './TestCaseModel';
 
 export interface ProblemDetail {
+  id: number;
   module: number;
   topic: number;
   title: string;

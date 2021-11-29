@@ -5,6 +5,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import * as ace from 'ace-builds';
 import { Language } from 'src/app/models/LanguageModel';
@@ -35,9 +36,11 @@ export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
   constructor(
     private _ideService: IdeService,
     private _commonService: CommonService,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _senitizer: DomSanitizer
   ) {}
 
+  public src!: SafeUrl;
   ngOnInit(): void {
     this.languages = this._ideService.getAllLanguages();
     this.selectedLanguage = this.languages[0];
@@ -66,6 +69,10 @@ export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
       this.problem = result;
       this.originalinput = this.problem?.sampleTestCase?.input;
       this.setBrowserTitle(this.problem?.title);
+      this.setCodeInEditor(this.selectedLanguage.defaultScript);
+      this.src = this._senitizer.bypassSecurityTrustResourceUrl(
+        this.problem?.solutionVideoLink ?? ''
+      ) as string;
     });
   }
   private setBrowserTitle(title: string) {

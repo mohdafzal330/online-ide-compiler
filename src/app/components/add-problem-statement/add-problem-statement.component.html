@@ -14,7 +14,10 @@
     </div>
     <div class="col-3">
       <mat-form-field appearance="standard">
-        <mat-select [(value)]="selectedTopic">
+        <mat-select
+          [(value)]="selectedTopic"
+          (selectionChange)="onTopicChange($event)"
+        >
           <mat-option *ngFor="let topic of topics" [value]="topic">
             {{ topic.name }}
           </mat-option>
@@ -36,12 +39,7 @@
             appearance="fill"
           >
             <mat-label>Problem title</mat-label>
-            <input
-              matInput
-              placeholder="Problem title"
-              value=""
-              #titleControl
-            />
+            <input matInput placeholder="Problem title" #titleControl />
           </mat-form-field>
         </div>
       </div>
@@ -94,12 +92,13 @@
             appearance="fill"
           >
             <mat-label>Sample Input</mat-label>
-            <input
+            <textarea
+              rows="10"
               matInput
               placeholder="Sample Input"
               value=""
               #sampleInputControl
-            />
+            ></textarea>
           </mat-form-field>
         </div>
       </div>
@@ -110,12 +109,13 @@
             appearance="fill"
           >
             <mat-label>Sample output</mat-label>
-            <input
+            <textarea
+              rows="10"
               matInput
               placeholder="Sample Output"
               value=""
               #sampleOutputControl
-            />
+            ></textarea>
           </mat-form-field>
         </div>
       </div>
@@ -135,7 +135,7 @@
       </div>
     </div>
     <div class="col-6">
-      <div>{{ content }}</div>
+      <!-- <div>{{ content }}</div> -->
       <div class="preview-prb-stmt" [innerHTML]="content"></div>
     </div>
   </div>

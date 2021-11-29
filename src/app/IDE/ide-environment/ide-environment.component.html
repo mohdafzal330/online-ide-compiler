@@ -1,7 +1,7 @@
 <div class="container-fluid bg-light">
   <div class="row">
     <div class="col-6">
-      <div class="row">
+      <div class="row" *ngIf="problem">
         <div class="col-12">
           <mat-tab-group animationDuration="0ms">
             <mat-tab label="Problem Description">
@@ -16,10 +16,18 @@
               <br />
             </mat-tab>
             <mat-tab label="Solution">
-              <div class="solution">
+              <div class="solution" *ngIf="problem?.solutionVideoLink">
                 <h3>Do not give up too soon, Just try once more...</h3>
 
-                <!-- <div>{{ problem?.solutionVideoLink }}</div> -->
+                <iframe
+                  width="560"
+                  height="315"
+                  [src]="src"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
 
                 <h3>
                   Watch complete solution here:

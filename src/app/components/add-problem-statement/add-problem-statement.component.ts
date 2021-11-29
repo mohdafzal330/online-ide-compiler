@@ -1,7 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
+import { ActivatedRoute } from '@angular/router';
 import { ListModel } from 'src/app/models/ListModel';
+import { ProblemDetail } from 'src/app/models/ProblemDetailMode';
 import { AdminService } from 'src/app/services/admin/admin.service';
+import { CommonService } from 'src/app/services/common-services/common.service';
 
 @Component({
   selector: 'app-add-problem-statement',
@@ -16,27 +19,64 @@ export class AddProblemStatementComponent implements OnInit {
   public topics: ListModel[] = [];
   public isLoading: boolean = false;
   public sampleOutput: string = '';
-
+  public problemId: number = 0;
+  public sampleTestCaseId: number = 0;
+  public selectedTopicId: number = 0;
   @ViewChild('sampleInputControl') public sampleInputControl!: ElementRef;
   @ViewChild('sampleOutputControl') public sampleOutputControl!: ElementRef;
   @ViewChild('titleControl') public titleControl!: ElementRef;
   @ViewChild('solutionVideoControl') public solutionVideoControl!: ElementRef;
 
-  constructor(private _adminService: AdminService) {}
+  constructor(
+    private _adminService: AdminService,
+    private route: ActivatedRoute,
+    private commonService: CommonService
+  ) {}
   ngOnInit(): void {
     this.getModules();
+
+    this.route.params.subscribe((params) => {
+      this.problemId = parseInt(params?.id ?? 0);
+
+      this.commonService.getProblemDetail(params?.id).subscribe((result) => {
+        this.content = result.problemContent;
+        this.sampleTestCaseId = result.sampleTestCase.id ?? 0;
+        this.selecteTopic(result.topic);
+        this.sampleInputControl.nativeElement.value =
+          result.sampleTestCase.input;
+        this.sampleOutputControl.nativeElement.value =
+          result.sampleTestCase.expectedOutput;
+        this.titleControl.nativeElement.value = result.title;
+        this.solutionVideoControl.nativeElement.value =
+          result.solutionVideoLink;
+      });
+    });
   }
+
+  private selecteTopic(id: number): void {
+    this.selectedTopic =
+      this.topics.find((t: ListModel): boolean => t.id == id) ??
+      this.selectedTopic;
+    this.selectedTopicId = id;
+  }
+
   public save(): void {
-    const payLoad = {
-      module: this.selectedModule.id,
-      topic: this.selectedTopic.id,
-      title: this.titleControl.nativeElement.value,
+    console.log(this.selectedTopic);
+    const payLoad: ProblemDetail = {
+      id: this.problemId,
+      module: this.selectedModule?.id,
+      topic:
+        this.selectedTopicId > 0
+          ? this.selectedTopicId
+          : this.selectedTopic?.id,
+      title: this.titleControl.nativeElement?.value,
       problemContent: this.content,
       sampleTestCase: {
-        input: this.sampleInputControl.nativeElement.value,
-        expectedOutput: this.sampleOutputControl.nativeElement.value,
+        id: this.sampleTestCaseId,
+        input: this.sampleInputControl.nativeElement?.value,
+        expectedOutput: this.sampleOutputControl.nativeElement?.value,
       },
-      solutionVideoLink: this.solutionVideoControl?.nativeElement.value,
+      solutionVideoLink: this.solutionVideoControl?.nativeElement?.value,
     };
 
     this._adminService.saveProblem(payLoad).subscribe((result) => {
@@ -45,6 +85,10 @@ export class AddProblemStatementComponent implements OnInit {
   }
   public onModuleChange(event: MatSelectChange) {
     this.getTopics(event?.value?.id);
+  }
+  public onTopicChange(event: MatSelectChange) {
+    // this.getTopics(event?.value?.id);
+    this.selectedTopicId = event?.value?.id;
   }
 
   private getModules(): void {
@@ -71,7 +115,10 @@ export class AddProblemStatementComponent implements OnInit {
           return;
         }
         this.topics = result;
-        this.selectedTopic = this.topics[0];
+        if (!this.selectedTopicId) {
+          this.selectedTopic = this.topics[0];
+          this.selectedTopicId = this.selectedTopic.id;
+        }
       },
       (error: any) => {
         const blankTopic = { id: 0, name: 'No module found' };

@@ -9,6 +9,18 @@ import { baseApiRootUrl } from 'src/app/shared/constants/http-config';
 @Injectable()
 export class AdminService {
   constructor(private client: HttpClient) {}
+  public deleteProblem(problem: any): Observable<Response> {
+    return this.client.post<Response>(
+      baseApiRootUrl + 'admin/deleteProblem',
+      problem
+    );
+  }
+
+  public getProblems(): Observable<ProblemDetail[]> {
+    return this.client.get<ProblemDetail[]>(
+      baseApiRootUrl + 'admin/getProblems'
+    );
+  }
 
   public getModules(): Observable<ListModel[]> {
     return this.client.get<ListModel[]>(baseApiRootUrl + 'admin/getModules');
