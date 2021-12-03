@@ -8,6 +8,7 @@ import {
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import * as ace from 'ace-builds';
+import { finalize } from 'rxjs/operators';
 import { Language } from 'src/app/models/LanguageModel';
 import { ProblemDetail } from 'src/app/models/ProblemDetailMode';
 import { CommonService } from 'src/app/services/common-services/common.service';
@@ -65,15 +66,19 @@ export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
     if (!problemId || problemId <= 0) {
       return;
     }
-    this._commonService.getProblemDetail(problemId).subscribe((result) => {
-      this.problem = result;
-      this.originalinput = this.problem?.sampleTestCase?.input;
-      this.setBrowserTitle(this.problem?.title);
-      this.setCodeInEditor(this.selectedLanguage.defaultScript);
-      this.src = this._senitizer.bypassSecurityTrustResourceUrl(
-        this.problem?.solutionVideoLink ?? ''
-      ) as string;
-    });
+    this._commonService.showLoading();
+    this._commonService
+      .getProblemDetail(problemId)
+      .pipe(finalize(() => this._commonService.hideLoading()))
+      .subscribe((result) => {
+        this.problem = result;
+        this.originalinput = this.problem?.sampleTestCase?.input;
+        this.setBrowserTitle(this.problem?.title);
+        this.setCodeInEditor(this.selectedLanguage.defaultScript);
+        this.src = this._senitizer.bypassSecurityTrustResourceUrl(
+          this.problem?.solutionVideoLink ?? ''
+        ) as string;
+      });
   }
   private setBrowserTitle(title: string) {
     if (!title) {
@@ -93,6 +98,7 @@ export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
     this.showIOContainer = !this.showIOContainer;
   }
   public run(isCompile: boolean = true) {
+    this._commonService.showLoading();
     this.showIOContainer = true;
     this.selectedIOContainerTab = 1;
     this.isExecuting = true;
@@ -110,18 +116,21 @@ export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
         expectedOutPut: this.problem.sampleTestCase.expectedOutput,
       },
     };
-    this._ideService.run(data).subscribe(
-      (result: any) => {
-        this.isExecuting = false;
-        this.setStatus(result.status);
-        this.setStatusCode(result.statusCode);
-        this.setOutput(result?.output ?? result?.error);
-      },
-      (error: any): void => {
-        this.isExecuting = false;
-        this.output = 'Internal Server Error';
-      }
-    );
+    this._ideService
+      .run(data)
+      .pipe(finalize(() => this._commonService.hideLoading()))
+      .subscribe(
+        (result: any) => {
+          this.isExecuting = false;
+          this.setStatus(result.status);
+          this.setStatusCode(result.statusCode);
+          this.setOutput(result?.output ?? result?.error);
+        },
+        (error: any): void => {
+          this.isExecuting = false;
+          this.output = 'Internal Server Error';
+        }
+      );
   }
   private getCodeFromEditor() {
     return this.aceEditor?.session?.getValue() ?? '';

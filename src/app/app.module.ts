@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -20,6 +21,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddProblemStatementComponent } from './components/add-problem-statement/add-problem-statement.component';
+import { LoadingBarComponent } from './components/loading-bar/loading-bar.component';
 import { ManageProblemsComponent } from './components/manage-problems/manage-problems.component';
 import { NavTreeComponent } from './components/nav-tree/nav-tree.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -37,6 +39,7 @@ import { IdeService } from './services/ide-services/ide.service';
     NavTreeComponent,
     NotFoundComponent,
     ManageProblemsComponent,
+    LoadingBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +60,7 @@ import { IdeService } from './services/ide-services/ide.service';
     MatTableModule,
     MatPaginatorModule,
     MatSnackBarModule,
+    MatProgressBarModule,
     RouterModule.forRoot([
       {
         path: 'admin/add-problem/:id',
