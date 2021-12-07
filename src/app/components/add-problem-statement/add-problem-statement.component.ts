@@ -1,11 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { ListModel } from 'src/app/models/ListModel';
 import { ProblemDetail } from 'src/app/models/ProblemDetailMode';
 import { AdminService } from 'src/app/services/admin/admin.service';
 import { CommonService } from 'src/app/services/common-services/common.service';
-
+import { DefaultLanguageCodes } from 'src/app/shared/constants/ide-constants';
 @Component({
   selector: 'app-add-problem-statement',
   templateUrl: './add-problem-statement.component.html',
@@ -22,11 +23,15 @@ export class AddProblemStatementComponent implements OnInit {
   public problemId: number = 0;
   public sampleTestCaseId: number = 0;
   public selectedTopicId: number = 0;
+  public defaultScript: string = DefaultLanguageCodes.java;
+
   @ViewChild('sampleInputControl') public sampleInputControl!: ElementRef;
   @ViewChild('sampleOutputControl') public sampleOutputControl!: ElementRef;
   @ViewChild('titleControl') public titleControl!: ElementRef;
   @ViewChild('solutionVideoControl') public solutionVideoControl!: ElementRef;
-
+  public editorValueNotifier$: BehaviorSubject<string> = new BehaviorSubject(
+    ''
+  );
   constructor(
     private _adminService: AdminService,
     private route: ActivatedRoute,
@@ -40,6 +45,7 @@ export class AddProblemStatementComponent implements OnInit {
 
       this.commonService.getProblemDetail(params?.id).subscribe((result) => {
         this.content = result.problemContent;
+        this.defaultScript = result.defaultScript ?? DefaultLanguageCodes.java;
         this.sampleTestCaseId = result.sampleTestCase.id ?? 0;
         this.selecteTopic(result.topic);
         this.sampleInputControl.nativeElement.value =
@@ -61,7 +67,6 @@ export class AddProblemStatementComponent implements OnInit {
   }
 
   public save(): void {
-    console.log(this.selectedTopic);
     const payLoad: ProblemDetail = {
       id: this.problemId,
       module: this.selectedModule?.id,
@@ -77,10 +82,12 @@ export class AddProblemStatementComponent implements OnInit {
         expectedOutput: this.sampleOutputControl.nativeElement?.value,
       },
       solutionVideoLink: this.solutionVideoControl?.nativeElement?.value,
+      defaultScript: this.editorValueNotifier$.value,
     };
-
     this._adminService.saveProblem(payLoad).subscribe((result) => {
-      alert(result.status);
+      this.commonService.openSnackBar(
+        'Problem Saved successfully. Status: ' + result.status
+      );
     });
   }
   public onModuleChange(event: MatSelectChange) {

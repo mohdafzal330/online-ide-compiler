@@ -56,8 +56,14 @@
           </mat-form-field>
         </div>
       </div>
-      <div class="mainEditor">
-        <div #editor id="editor" class="editor"></div>
+      <div class="row" *ngIf="defaultScript">
+        <div class="col-12">
+          <app-code-editor
+            [changeNotifier]="editorchangeNotifier"
+            [script]="defaultScript"
+            [editorMode]="selectedLanguage.modeName"
+          ></app-code-editor>
+        </div>
       </div>
     </div>
   </div>

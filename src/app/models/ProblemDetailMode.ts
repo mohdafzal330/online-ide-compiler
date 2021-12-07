@@ -8,5 +8,6 @@ export interface ProblemDetail {
   problemContent: string;
   sampleTestCase: TestCase;
   solutionVideoLink: string;
+  defaultScript?: string;
   topicName?: string;
 }

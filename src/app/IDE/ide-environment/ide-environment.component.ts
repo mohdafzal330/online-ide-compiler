@@ -1,24 +1,19 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import * as ace from 'ace-builds';
+import { BehaviorSubject } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { Language } from 'src/app/models/LanguageModel';
 import { ProblemDetail } from 'src/app/models/ProblemDetailMode';
 import { CommonService } from 'src/app/services/common-services/common.service';
 import { IdeService } from 'src/app/services/ide-services/ide.service';
+import { DefaultLanguageCodes } from 'src/app/shared/constants/ide-constants';
 @Component({
   selector: 'app-ide-environment',
   templateUrl: './ide-environment.component.html',
   styleUrls: ['./ide-environment.component.scss'],
 })
-export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
+export class IdeEnvironmentComponent implements OnInit {
   public originalinput: string = ``;
   public output: any = '';
   public statusCode: number = -1;
@@ -27,12 +22,12 @@ export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
   public selectedLanguage!: Language;
   public showIOContainer: boolean = false;
   public isExecuting: boolean = false;
-  public aceEditor: any;
   public selectedIOContainerTab: number = 0;
   public problem!: ProblemDetail;
-  public theme: string = 'ace/theme/tomorrow_night';
-
-  @ViewChild('editor') private editor!: ElementRef<HTMLElement>;
+  public editorchangeNotifier: BehaviorSubject<string> = new BehaviorSubject(
+    ''
+  );
+  public defaultScript: string = '';
 
   constructor(
     private _ideService: IdeService,
@@ -52,16 +47,6 @@ export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
     });
   }
 
-  public ngAfterViewInit(): void {
-    ace.config.set('fontSize', '14px');
-    this.aceEditor = ace.edit(this.editor.nativeElement);
-    this.aceEditor.setTheme(this.theme);
-    this.aceEditor.setOptions({ fontSize: 17 });
-
-    this.setEditorMode(this.selectedLanguage.modeName);
-    this.setCodeInEditor(this.selectedLanguage.defaultScript);
-  }
-
   private getProblemDetail(problemId: number): void {
     if (!problemId || problemId <= 0) {
       return;
@@ -74,7 +59,9 @@ export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
         this.problem = result;
         this.originalinput = this.problem?.sampleTestCase?.input;
         this.setBrowserTitle(this.problem?.title);
-        this.setCodeInEditor(this.selectedLanguage.defaultScript);
+
+        this.loadDefaultScript();
+
         this.src = this._senitizer.bypassSecurityTrustResourceUrl(
           this.problem?.solutionVideoLink ?? ''
         ) as string;
@@ -91,11 +78,27 @@ export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
     if (!e || !e.value) {
       return;
     }
-    this.setCodeInEditor(e.value?.defaultScript);
-    this.setEditorMode(e.value?.modeName);
+
+    this.loadDefaultScript();
+    this.setOutput('');
+    this.setStatus('');
+    this.setStatusCode(-1);
+    this.toggleIOContainer(true);
   }
-  public toggleIOContainer(): void {
-    this.showIOContainer = !this.showIOContainer;
+  private loadDefaultScript(): void {
+    this.defaultScript =
+      (this.selectedLanguage.languageCode == 'java'
+        ? this.problem.defaultScript
+        : this.selectedLanguage.defaultScript ?? '') ??
+      DefaultLanguageCodes.java;
+  }
+
+  public toggleIOContainer(close: boolean = false): void {
+    if (close) {
+      this.showIOContainer = false;
+    } else {
+      this.showIOContainer = !this.showIOContainer;
+    }
   }
   public run(isCompile: boolean = true) {
     this._commonService.showLoading();
@@ -107,7 +110,7 @@ export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
 
   private execute(isCompile: boolean) {
     const data = {
-      script: this.getCodeFromEditor(),
+      script: this.editorchangeNotifier.value,
       language: this.selectedLanguage.languageCode,
       isCompile: isCompile,
       stdin: this.problem.sampleTestCase.input,
@@ -122,8 +125,8 @@ export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
       .subscribe(
         (result: any) => {
           this.isExecuting = false;
-          this.setStatus(result.status);
-          this.setStatusCode(result.statusCode);
+          this.setStatus(result?.status);
+          this.setStatusCode(result?.statusCode);
           this.setOutput(result?.output ?? result?.error);
         },
         (error: any): void => {
@@ -131,15 +134,6 @@ export class IdeEnvironmentComponent implements OnInit, AfterViewInit {
           this.output = 'Internal Server Error';
         }
       );
-  }
-  private getCodeFromEditor() {
-    return this.aceEditor?.session?.getValue() ?? '';
-  }
-  private setCodeInEditor(code: string | undefined) {
-    this.aceEditor?.session?.setValue(code);
-  }
-  private setEditorMode(modeName: string | undefined) {
-    this.aceEditor?.session?.setMode(modeName);
   }
   private setStatus(status: string) {
     this.status = status;
