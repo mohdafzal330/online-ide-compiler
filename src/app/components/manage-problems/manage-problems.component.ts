@@ -102,7 +102,7 @@ export class ManageProblemsComponent implements OnInit {
           (problem: ProblemDetail): boolean => problem.id != id
         );
         this.setDataSource();
-        this.commonService.openSnackBar('Deleted Successfully');
+        this.commonService.showToast('Deleted Successfully');
       });
     }
   }

@@ -5,7 +5,10 @@
       <div class="row">
         <div class="col-1">
           <mat-form-field appearance="standard" class="language-dr">
-            <mat-select [(value)]="selectedLanguage">
+            <mat-select
+              [(value)]="selectedLanguage"
+              (selectionChange)="onLaguageChange($event)"
+            >
               <mat-option *ngFor="let lang of languages" [value]="lang">
                 {{ lang.name }}
               </mat-option>

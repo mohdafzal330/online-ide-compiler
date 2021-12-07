@@ -45,11 +45,11 @@ export class IdeEnvironmentComponent implements OnInit {
   public src!: SafeUrl;
   ngOnInit(): void {
     this.languages = this._ideService.getAllLanguages();
-    this.selectedLanguage = this.languages[0];
     this.themes = this._ideService.getAllThemes();
-    this.selectedTheme = this.themes[0];
     this.fonts = this._ideService.getAllFonts();
-    this.selectedFont = this.fonts[5];
+    this.setLanguage();
+    this.setTheme();
+    this.setFontSize();
 
     this._activatedRoute.params.subscribe((params) => {
       const problemId = params?.id ?? 11;
@@ -78,7 +78,7 @@ export class IdeEnvironmentComponent implements OnInit {
           ) as string;
         },
         (error: any): any => {
-          this._commonService.openSnackBar('Something went wrong!');
+          this._commonService.showToast('Something went wrong!');
         }
       );
   }
@@ -89,10 +89,43 @@ export class IdeEnvironmentComponent implements OnInit {
     document.title = title;
   }
 
+  private setLanguage(): void {
+    const langCode =
+      this._commonService.getFromLocalStorage('codePlanetLanguage');
+
+    this.selectedLanguage =
+      this.languages.find(
+        (lang: Language): boolean => lang.languageCode == langCode
+      ) ?? this.languages[0];
+  }
+
+  private setTheme(): void {
+    const themeCode = this._commonService.getFromLocalStorage(
+      'codePlanetEditorTheme'
+    );
+
+    this.selectedTheme =
+      this.themes.find((lang: Theme): boolean => lang.code == themeCode) ??
+      this.themes[0];
+  }
+  private setFontSize(): void {
+    const fontSize = this._commonService.getFromLocalStorage(
+      'codePlanetEditorFontSize'
+    );
+
+    this.selectedFont =
+      this.fonts.find((lang: ListModel): boolean => lang.name == fontSize) ??
+      this.fonts[0];
+  }
+
   public onLaguageChange(e: any): void {
     if (!e || !e.value) {
       return;
     }
+    this._commonService.setInLocalStorage(
+      'codePlanetLanguage',
+      this.selectedLanguage.languageCode
+    );
 
     this.loadDefaultScript();
     this.setOutput('');
@@ -147,7 +180,7 @@ export class IdeEnvironmentComponent implements OnInit {
         (error: any): void => {
           this.isExecuting = false;
           this.output = 'Internal Server Error';
-          this._commonService.openSnackBar(this.output);
+          this._commonService.showToast(this.output);
         }
       );
   }

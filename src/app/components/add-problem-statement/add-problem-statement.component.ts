@@ -85,7 +85,7 @@ export class AddProblemStatementComponent implements OnInit {
       defaultScript: this.editorValueNotifier$.value,
     };
     this._adminService.saveProblem(payLoad).subscribe((result) => {
-      this.commonService.openSnackBar(
+      this.commonService.showToast(
         'Problem Saved successfully. Status: ' + result.status
       );
     });

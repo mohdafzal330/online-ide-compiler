@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import * as ace from 'ace-builds';
 import { BehaviorSubject } from 'rxjs';
+import { CommonService } from 'src/app/services/common-services/common.service';
 @Component({
   selector: 'app-code-editor',
   templateUrl: './code-editor.component.html',
@@ -8,19 +9,27 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CodeEditorComponent implements OnInit {
   @Input() editorMode: string = 'ace/mode/java';
-  @Input() script: string = 'sc';
+  @Input() script: string = '// write your code here';
   @Input() changeNotifier: BehaviorSubject<string> = new BehaviorSubject('');
   @Input() theme: string = 'ace/theme/dracula';
   @Input() fontSize: string = '17';
 
   public aceEditor: any;
   @ViewChild('editor') private editor!: ElementRef<HTMLElement>;
-  constructor() {}
+  constructor(private _commonService: CommonService) {}
 
   ngOnInit(): void {}
-  ngOnChanges(): void {
+  ngOnChanges(e: any): void {
+    this._commonService.setInLocalStorage('codePlanetEditorTheme', this.theme);
+    this._commonService.setInLocalStorage(
+      'codePlanetEditorFontSize',
+      this.fontSize
+    );
+
     this.setEditorMode(this.editorMode);
-    this.setCodeInEditor(this.script);
+    if (e?.script) {
+      this.setCodeInEditor(this.script);
+    }
     this.setEditorTheme(this.theme);
     this.setEditorFont(+this.fontSize);
   }

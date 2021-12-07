@@ -29,10 +29,16 @@ export class CommonService {
     this.loadingIndicator$.next(false);
   }
 
-  openSnackBar(msg: string = 'Nice ') {
+  showToast(msg: string = 'Nice '): void {
     this._snackBar.open(msg, ' x ', {
       horizontalPosition: 'right',
       verticalPosition: 'top',
     });
+  }
+  setInLocalStorage(key: string, value: any): void {
+    localStorage.setItem(key, value);
+  }
+  getFromLocalStorage(key: string): any {
+    return localStorage.getItem(key);
   }
 }

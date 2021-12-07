@@ -34,11 +34,24 @@ export class CompilerComponent implements OnInit {
 
   ngOnInit(): void {
     this.languages = this._ideService.getAllLanguages();
-    this.selectedLanguage = this.languages[0];
     this.themes = this._ideService.getAllThemes();
-    this.selectedTheme = this.themes[0];
     this.fonts = this._ideService.getAllFonts();
-    this.selectedFont = this.fonts[3];
+    this.setLanguage();
+    this.setTheme();
+    this.setFontSize();
+  }
+
+  public onLaguageChange(e: any): void {
+    if (!e || !e.value) {
+      return;
+    }
+    this._commonService.setInLocalStorage(
+      'codePlanetLanguage',
+      this.selectedLanguage.languageCode
+    );
+    this.setOutput('');
+    this.setStatus('');
+    this.setStatusCode(-1);
   }
 
   public run() {
@@ -71,9 +84,37 @@ export class CompilerComponent implements OnInit {
         (error: any): void => {
           this.isExecuting = false;
           this.output = 'Internal Server Error';
-          this._commonService.openSnackBar(this.output);
+          this._commonService.showToast(this.output);
         }
       );
+  }
+  private setLanguage(): void {
+    const langCode =
+      this._commonService.getFromLocalStorage('codePlanetLanguage');
+
+    this.selectedLanguage =
+      this.languages.find(
+        (lang: Language): boolean => lang.languageCode == langCode
+      ) ?? this.languages[0];
+  }
+
+  private setTheme(): void {
+    const themeCode = this._commonService.getFromLocalStorage(
+      'codePlanetEditorTheme'
+    );
+
+    this.selectedTheme =
+      this.themes.find((lang: Theme): boolean => lang.code == themeCode) ??
+      this.themes[0];
+  }
+  private setFontSize(): void {
+    const fontSize = this._commonService.getFromLocalStorage(
+      'codePlanetEditorFontSize'
+    );
+
+    this.selectedFont =
+      this.fonts.find((lang: ListModel): boolean => lang.name == fontSize) ??
+      this.fonts[0];
   }
   private setStatus(status: string) {
     this.status = status;
