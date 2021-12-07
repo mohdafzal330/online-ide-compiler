@@ -25,7 +25,12 @@ export class CodeEditorComponent implements OnInit {
     ace.config.set('fontSize', '14px');
     this.aceEditor = ace.edit(this.editor.nativeElement);
     this.aceEditor.setTheme(this.theme);
-    this.aceEditor.setOptions({ fontSize: 17 });
+    this.aceEditor.setOptions({
+      fontSize: 17,
+      enableBasicAutocompletion: true,
+      enableLiveAutocompletion: true,
+      enableSnippets: false,
+    });
 
     this.setEditorMode(this.editorMode);
     this.setCodeInEditor(this.script);
@@ -33,6 +38,7 @@ export class CodeEditorComponent implements OnInit {
     this.aceEditor.on('change', (e: any) => {
       this.changeNotifier.next(this.getCodeFromEditor());
     });
+
     this.changeNotifier.next(this.script);
   }
 
