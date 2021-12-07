@@ -41,7 +41,7 @@ namespace CodePlanet.Infrastructure.IDEService
                     executionResult.statusCode = (int)Enums.IDEStatus.CorrectAnswer;
                 }
                 else if(executionResult!=null && executionResult.output!=null &&
-                    executionResult.output.Equals(Format(model.TestCase.ExpectedOutput)))
+                    Format(executionResult.output).Equals(Format(model.TestCase.ExpectedOutput)))
                 {
 
                     executionResult.Status = "Correct answer";
@@ -116,18 +116,18 @@ namespace CodePlanet.Infrastructure.IDEService
             result = result.Replace("\\r", "\r");
 
             
-            if (result.LastIndexOf("\n")==result.Length-2 || result.LastIndexOf("\t") == result.Length - 2
-                || result.LastIndexOf("\r") == result.Length - 2)
+            if (result.LastIndexOf("\n")==result.Length-1 || result.LastIndexOf("\t") == result.Length - 1
+                || result.LastIndexOf("\r") == result.Length - 1)
             {
                 result = result.Substring(0, result.Length - 1);
             }
-             if (result.LastIndexOf("\n")==result.Length-2 || result.LastIndexOf("\t") == result.Length - 2
-                || result.LastIndexOf("\r") == result.Length - 2)
+             if (result.LastIndexOf("\n")==result.Length-1 || result.LastIndexOf("\t") == result.Length - 1
+                || result.LastIndexOf("\r") == result.Length - 1)
             {
                 result = result.Substring(0, result.Length - 1);
             }
-             if (result.LastIndexOf("\n")==result.Length-2 || result.LastIndexOf("\t") == result.Length - 2
-                || result.LastIndexOf("\r") == result.Length - 2)
+             if (result.LastIndexOf("\n")==result.Length-1 || result.LastIndexOf("\t") == result.Length - 1
+                || result.LastIndexOf("\r") == result.Length - 1)
             {
                 result = result.Substring(0, result.Length - 1);
             }

@@ -50,7 +50,8 @@ namespace CodePlanet.Infrastructure.IDEService
                     Title = model.Title,
                     Content = model.ProblemContent,
                     FkSampleTestCaseId = sampleTestId,
-                    SolutionVideo = model.SolutionVideoLink
+                    SolutionVideo = model.SolutionVideoLink,
+                    DefaultScript = model.DefaultScript
                 };
                 _dbContext.CDProblems.Add(problem);
                 _dbContext.SaveChanges();
@@ -84,6 +85,7 @@ namespace CodePlanet.Infrastructure.IDEService
                 problem.FkTopicId = model.Topic;
                 problem.Content = model.ProblemContent;
                 problem.SolutionVideo = model.SolutionVideoLink;
+                problem.DefaultScript = model.DefaultScript;
 
                 _dbContext.SaveChanges();
                 return new ResponseViewModel { Status = "Success" };
@@ -187,7 +189,8 @@ namespace CodePlanet.Infrastructure.IDEService
                         ProblemContent = res.p.Content,
                         SampleTestCaseId = res.p.FkSampleTestCaseId,
                         SolutionVideoLink = res.p.SolutionVideo,
-                        TopicName = res.t.Name
+                        TopicName = res.t.Name,
+                        DefaultScript = res.p.DefaultScript
                     }).ToList();
 
                 return problems;

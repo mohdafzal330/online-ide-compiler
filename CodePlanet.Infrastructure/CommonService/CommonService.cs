@@ -20,18 +20,20 @@ namespace CodePlanet.Infrastructure.CommonService
         {
             try
             {
-                var problem = _dbContext.CDProblems.Where(p=>p.Id==problemId && p.RowStatus == 1)
-                    .Join(_dbContext.CDTopics, p=>p.FkTopicId, t=>t.Id, (p, t) => new {p,t})
-                    .Select(res=>new ProblemStatementViewModel { 
-                    Title = res.p.Title,
-                    ProblemContent = res.p.Content,
-                    SampleTestCaseId = res.p.FkSampleTestCaseId,
-                    SolutionVideoLink = res.p.SolutionVideo,
-                    TopicName = res.t.Name,
-                    Topic = res.t.Id
-                }).FirstOrDefault();
+                var problem = _dbContext.CDProblems.Where(p => p.Id == problemId && p.RowStatus == 1)
+                    .Join(_dbContext.CDTopics, p => p.FkTopicId, t => t.Id, (p, t) => new { p, t })
+                    .Select(res => new ProblemStatementViewModel
+                    {
+                        Title = res.p.Title,
+                        ProblemContent = res.p.Content,
+                        SampleTestCaseId = res.p.FkSampleTestCaseId,
+                        SolutionVideoLink = res.p.SolutionVideo,
+                        DefaultScript = res.p.DefaultScript,
+                        TopicName = res.t.Name,
+                        Topic = res.t.Id
+                    }).FirstOrDefault();
 
-                if (problem != null && problem.SampleTestCaseId>0)
+                if (problem != null && problem.SampleTestCaseId > 0)
                 {
                     var testCase = _dbContext.CDTestCases.Where(t => t.Id == problem.SampleTestCaseId
                     && t.RowStatus == 1).FirstOrDefault();
@@ -43,7 +45,7 @@ namespace CodePlanet.Infrastructure.CommonService
                 }
                 return problem;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new ProblemStatementViewModel();
             }
@@ -54,15 +56,15 @@ namespace CodePlanet.Infrastructure.CommonService
             try
             {
                 var topics = GetTopics(moduleId);
-                for(int loopIndex = 0; loopIndex <topics.Count; loopIndex++)
+                for (int loopIndex = 0; loopIndex < topics.Count; loopIndex++)
                 {
                     var problems = GetProblems(topics[loopIndex].Id);
 
-                    topics[loopIndex].ChildLists = problems.Count>0 ? problems : null;
+                    topics[loopIndex].ChildLists = problems.Count > 0 ? problems : null;
                 }
                 return topics;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new List<ListViewModel>();
             }
@@ -71,14 +73,15 @@ namespace CodePlanet.Infrastructure.CommonService
         {
             try
             {
-                var topics = _dbContext.CDTopics.Where(t => t.FkModuleId == moduleId && t.RowStatus==1)
+                var topics = _dbContext.CDTopics.Where(t => t.FkModuleId == moduleId && t.RowStatus == 1)
                     .Select(t => new ListViewModel
                     {
-                        Id = t.Id, Name = t.Name
+                        Id = t.Id,
+                        Name = t.Name
                     }).ToList();
                 return topics;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new List<ListViewModel>();
             }
@@ -87,14 +90,15 @@ namespace CodePlanet.Infrastructure.CommonService
         {
             try
             {
-                var problems = _dbContext.CDProblems.Where(p=>p.FkTopicId== topicId && p.RowStatus == 1)
+                var problems = _dbContext.CDProblems.Where(p => p.FkTopicId == topicId && p.RowStatus == 1)
                     .Select(p => new ListViewModel
                     {
-                        Id = p.Id, Name = p.Title
+                        Id = p.Id,
+                        Name = p.Title
                     }).ToList();
                 return problems;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new List<ListViewModel>();
             }

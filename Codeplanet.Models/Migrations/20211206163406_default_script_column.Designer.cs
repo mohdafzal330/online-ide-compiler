@@ -3,14 +3,16 @@ using Codeplanet.Models.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Codeplanet.Models.Migrations
 {
     [DbContext(typeof(CDDBContext))]
-    partial class CDDBContextModelSnapshot : ModelSnapshot
+    [Migration("20211206163406_default_script_column")]
+    partial class default_script_column
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

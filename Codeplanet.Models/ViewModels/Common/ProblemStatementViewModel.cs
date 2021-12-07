@@ -14,6 +14,7 @@ namespace Codeplanet.Models.ViewModels.Common
         public string Title { get; set; }
         public string ProblemContent { get; set; }
         public string SolutionVideoLink { get; set; }
+        public string DefaultScript { get; set; }
         public long SampleTestCaseId { get; set; }
         public TestCaseViewModel SampleTestCase { get; set; }
     }

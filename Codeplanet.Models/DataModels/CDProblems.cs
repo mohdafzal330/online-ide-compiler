@@ -9,6 +9,8 @@
         public string Title { get; set; }
         public string Content { get; set; }
         public string SolutionVideo { get; set; }
+        public string DefaultScript { get; set; }
+
         public int RowStatus { get; set; }
     }
 
