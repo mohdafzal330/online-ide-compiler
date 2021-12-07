@@ -3,11 +3,30 @@
     <div class="col-12">
       <h2>Compile and Execute your sample codes here</h2>
       <div class="row">
-        <div class="col-3">
+        <div class="col-1">
           <mat-form-field appearance="standard" class="language-dr">
             <mat-select [(value)]="selectedLanguage">
               <mat-option *ngFor="let lang of languages" [value]="lang">
                 {{ lang.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-2">
+          <mat-form-field appearance="standard">
+            <mat-select [(value)]="selectedTheme">
+              <mat-option *ngFor="let theme of themes" [value]="theme">
+                {{ theme.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-2">
+          <mat-form-field appearance="standard" class="font-dr">
+            <mat-label>Font size</mat-label>
+            <mat-select [(value)]="selectedFont">
+              <mat-option *ngFor="let font of fonts" [value]="font">
+                {{ font.name }}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -21,6 +40,8 @@
         [script]="selectedLanguage.defaultScript"
         [changeNotifier]="editorchangeNotifier"
         [editorMode]="selectedLanguage.modeName"
+        [theme]="selectedTheme.code"
+        [fontSize]="selectedFont.name"
       ></app-code-editor>
     </div>
     <div class="col-6">

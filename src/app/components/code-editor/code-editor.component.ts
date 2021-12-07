@@ -10,9 +10,10 @@ export class CodeEditorComponent implements OnInit {
   @Input() editorMode: string = 'ace/mode/java';
   @Input() script: string = 'sc';
   @Input() changeNotifier: BehaviorSubject<string> = new BehaviorSubject('');
+  @Input() theme: string = 'ace/theme/dracula';
+  @Input() fontSize: string = '17';
 
   public aceEditor: any;
-  public theme: string = 'ace/theme/tomorrow_night';
   @ViewChild('editor') private editor!: ElementRef<HTMLElement>;
   constructor() {}
 
@@ -20,13 +21,14 @@ export class CodeEditorComponent implements OnInit {
   ngOnChanges(): void {
     this.setEditorMode(this.editorMode);
     this.setCodeInEditor(this.script);
+    this.setEditorTheme(this.theme);
+    this.setEditorFont(+this.fontSize);
   }
   public ngAfterViewInit(): void {
-    ace.config.set('fontSize', '14px');
     this.aceEditor = ace.edit(this.editor.nativeElement);
     this.aceEditor.setTheme(this.theme);
     this.aceEditor.setOptions({
-      fontSize: 17,
+      fontSize: +this.fontSize,
       enableBasicAutocompletion: true,
       enableLiveAutocompletion: true,
       enableSnippets: false,
@@ -48,7 +50,15 @@ export class CodeEditorComponent implements OnInit {
   private setCodeInEditor(code: string | undefined) {
     this.aceEditor?.session?.setValue(code);
   }
+  private setEditorFont(fontSize: number | undefined) {
+    this.aceEditor?.setOptions({
+      fontSize: fontSize ?? 15,
+    });
+  }
   private setEditorMode(modeName: string | undefined) {
     this.aceEditor?.session?.setMode(modeName);
+  }
+  private setEditorTheme(theme: string | undefined) {
+    this.aceEditor?.setTheme(this.theme);
   }
 }

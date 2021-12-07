@@ -4,7 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { Language } from 'src/app/models/LanguageModel';
+import { ListModel } from 'src/app/models/ListModel';
 import { ProblemDetail } from 'src/app/models/ProblemDetailMode';
+import { Theme } from 'src/app/models/ThemeModel';
 import { CommonService } from 'src/app/services/common-services/common.service';
 import { IdeService } from 'src/app/services/ide-services/ide.service';
 import { DefaultLanguageCodes } from 'src/app/shared/constants/ide-constants';
@@ -19,7 +21,11 @@ export class IdeEnvironmentComponent implements OnInit {
   public statusCode: number = -1;
   public status: string = '';
   public languages: Language[] = [];
+  public fonts: ListModel[] = [];
+  public themes: Theme[] = [];
   public selectedLanguage!: Language;
+  public selectedFont!: ListModel;
+  public selectedTheme!: Theme;
   public showIOContainer: boolean = false;
   public isExecuting: boolean = false;
   public selectedIOContainerTab: number = 0;
@@ -40,6 +46,10 @@ export class IdeEnvironmentComponent implements OnInit {
   ngOnInit(): void {
     this.languages = this._ideService.getAllLanguages();
     this.selectedLanguage = this.languages[0];
+    this.themes = this._ideService.getAllThemes();
+    this.selectedTheme = this.themes[0];
+    this.fonts = this._ideService.getAllFonts();
+    this.selectedFont = this.fonts[5];
 
     this._activatedRoute.params.subscribe((params) => {
       const problemId = params?.id ?? 11;

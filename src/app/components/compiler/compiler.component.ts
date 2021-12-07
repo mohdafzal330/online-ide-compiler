@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { Language } from 'src/app/models/LanguageModel';
+import { ListModel } from 'src/app/models/ListModel';
+import { Theme } from 'src/app/models/ThemeModel';
 import { CommonService } from 'src/app/services/common-services/common.service';
 import { IdeService } from 'src/app/services/ide-services/ide.service';
 
@@ -16,6 +18,10 @@ export class CompilerComponent implements OnInit {
   public editorchangeNotifier: BehaviorSubject<string> = new BehaviorSubject(
     ''
   );
+  public themes: Theme[] = [];
+  public selectedTheme!: Theme;
+  public fonts: ListModel[] = [];
+  public selectedFont!: ListModel;
   public isExecuting: boolean = false;
   public input: string = '';
   public output: string = '';
@@ -29,6 +35,10 @@ export class CompilerComponent implements OnInit {
   ngOnInit(): void {
     this.languages = this._ideService.getAllLanguages();
     this.selectedLanguage = this.languages[0];
+    this.themes = this._ideService.getAllThemes();
+    this.selectedTheme = this.themes[0];
+    this.fonts = this._ideService.getAllFonts();
+    this.selectedFont = this.fonts[3];
   }
 
   public run() {
