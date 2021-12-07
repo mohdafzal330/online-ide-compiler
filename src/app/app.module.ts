@@ -21,6 +21,8 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddProblemStatementComponent } from './components/add-problem-statement/add-problem-statement.component';
+import { CodeEditorComponent } from './components/code-editor/code-editor.component';
+import { CompilerComponent } from './components/compiler/compiler.component';
 import { LoadingBarComponent } from './components/loading-bar/loading-bar.component';
 import { ManageProblemsComponent } from './components/manage-problems/manage-problems.component';
 import { NavTreeComponent } from './components/nav-tree/nav-tree.component';
@@ -30,7 +32,6 @@ import { IdeEnvironmentComponent } from './IDE/ide-environment/ide-environment.c
 import { AdminService } from './services/admin/admin.service';
 import { CommonService } from './services/common-services/common.service';
 import { IdeService } from './services/ide-services/ide.service';
-import { CodeEditorComponent } from './components/code-editor/code-editor.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +43,7 @@ import { CodeEditorComponent } from './components/code-editor/code-editor.compon
     ManageProblemsComponent,
     LoadingBarComponent,
     CodeEditorComponent,
+    CompilerComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,6 +85,10 @@ import { CodeEditorComponent } from './components/code-editor/code-editor.compon
       {
         path: 'problems',
         component: IdeEnvironmentComponent,
+      },
+      {
+        path: 'compiler',
+        component: CompilerComponent,
       },
       {
         path: '',

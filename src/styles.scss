@@ -22,3 +22,25 @@ body {
 .float-left {
   float: left;
 }
+.width-100-percent {
+  width: 100%;
+}
+.input-area {
+  resize: none;
+  font-size: 16px;
+  outline: none;
+  padding: 10px;
+}
+.output-area {
+  resize: none;
+  font-size: 15px;
+  padding: 10px;
+  margin-top: 10px;
+  outline: none;
+}
+.loading-icons {
+  margin-left: 10px;
+}
+.width-50-percent {
+  width: 50%;
+}

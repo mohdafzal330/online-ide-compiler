@@ -55,17 +55,22 @@ export class IdeEnvironmentComponent implements OnInit {
     this._commonService
       .getProblemDetail(problemId)
       .pipe(finalize(() => this._commonService.hideLoading()))
-      .subscribe((result) => {
-        this.problem = result;
-        this.originalinput = this.problem?.sampleTestCase?.input;
-        this.setBrowserTitle(this.problem?.title);
+      .subscribe(
+        (result) => {
+          this.problem = result;
+          this.originalinput = this.problem?.sampleTestCase?.input;
+          this.setBrowserTitle(this.problem?.title);
 
-        this.loadDefaultScript();
+          this.loadDefaultScript();
 
-        this.src = this._senitizer.bypassSecurityTrustResourceUrl(
-          this.problem?.solutionVideoLink ?? ''
-        ) as string;
-      });
+          this.src = this._senitizer.bypassSecurityTrustResourceUrl(
+            this.problem?.solutionVideoLink ?? ''
+          ) as string;
+        },
+        (error: any): any => {
+          this._commonService.openSnackBar('Something went wrong!');
+        }
+      );
   }
   private setBrowserTitle(title: string) {
     if (!title) {
@@ -132,6 +137,7 @@ export class IdeEnvironmentComponent implements OnInit {
         (error: any): void => {
           this.isExecuting = false;
           this.output = 'Internal Server Error';
+          this._commonService.openSnackBar(this.output);
         }
       );
   }

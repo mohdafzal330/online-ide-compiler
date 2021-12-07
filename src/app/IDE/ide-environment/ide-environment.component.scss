@@ -11,16 +11,7 @@
   transition: 120ms;
   overflow-x: hidden;
 }
-.input-area {
-  resize: none;
-  font-size: 16px;
-}
-.output-area {
-  resize: none;
-  font-size: 15px;
-  padding: 10px;
-  margin-top: 10px;
-}
+
 .submit-btn {
   background-color: #1ba94c;
 }
@@ -34,8 +25,9 @@
   margin-left: 5px;
   margin-bottom: 5px;
 }
-.loading-icons {
-  margin-left: 10px;
+
+.spinner-grow {
+  transform: scale(0.0001);
 }
 .content {
   max-height: 626px;

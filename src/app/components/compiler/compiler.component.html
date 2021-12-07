@@ -1,0 +1,92 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <h2>Compile and Execute your sample codes here</h2>
+      <div class="row">
+        <div class="col-3">
+          <mat-form-field appearance="standard" class="language-dr">
+            <mat-select [(value)]="selectedLanguage">
+              <mat-option *ngFor="let lang of languages" [value]="lang">
+                {{ lang.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <app-code-editor
+        [script]="selectedLanguage.defaultScript"
+        [changeNotifier]="editorchangeNotifier"
+        [editorMode]="selectedLanguage.modeName"
+      ></app-code-editor>
+    </div>
+    <div class="col-6">
+      <H3>MANGAE YOUR STANDARD INPUT AND OUTPUT BELOW</H3>
+      <hr />
+      <div class="row">
+        <div class="col-12">
+          <h3>INPUT</h3>
+          <textarea
+            [(ngModel)]="input"
+            class="input-area m-2"
+            cols="81"
+            rows="7"
+          >
+          </textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <h3>OUTPUT</h3>
+          <textarea class="output-area m-2" cols="85" rows="7" disabled>{{
+            output
+          }}</textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <button
+            mat-raised-button
+            color="accent"
+            class="compile-btn m-2"
+            [disabled]="isExecuting"
+            (click)="run()"
+          >
+            <i class="fa fa-play"></i>
+            COMPILE & RUN
+          </button>
+        </div>
+        <div class="col-3">
+          <div *ngIf="isExecuting" class="m-2">
+            <div class="spinner-grow text-primary loading-icons" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-border loading-icons" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-success loading-icons" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+          <div *ngIf="!isExecuting" class="m-3">
+            <span *ngIf="statusCode == 0" class="text-danger m-2 font-16">
+              <i class="fa fa-times-circle m-1"></i>
+              {{ status }}
+            </span>
+            <span *ngIf="statusCode == 1" class="green m-2 font-16">
+              <i class="fa fa-check-circle m-1"></i>
+              {{ status }}
+            </span>
+            <span *ngIf="statusCode == 2" class="green m-2 font-16">
+              <i class="fa fa-check m-1"></i>
+              {{ status }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
