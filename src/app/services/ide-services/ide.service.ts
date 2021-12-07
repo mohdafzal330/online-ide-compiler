@@ -103,7 +103,7 @@ export class IdeService {
       {
         name: 'Node/JS',
         id: AllLanguages.JAVASCRIPT,
-        languageCode: LanguageCodes.JAVA,
+        languageCode: LanguageCodes.JAVASCRIPT,
         modeName: 'ace/mode/javascript',
         defaultScript: DefaultLanguageCodes.javascript,
       },
