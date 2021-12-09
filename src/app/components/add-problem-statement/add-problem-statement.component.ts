@@ -41,6 +41,7 @@ export class AddProblemStatementComponent implements OnInit {
     this.getModules();
 
     this.route.params.subscribe((params) => {
+      this._adminService.validateAdmin();
       this.problemId = parseInt(params?.id ?? 0);
 
       this.commonService.getProblemDetail(params?.id).subscribe((result) => {
