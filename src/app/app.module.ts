@@ -65,40 +65,43 @@ import { IdeService } from './services/ide-services/ide.service';
     MatPaginatorModule,
     MatSnackBarModule,
     MatProgressBarModule,
-    RouterModule.forRoot([
-      {
-        path: 'admin/add-problem/:id',
-        component: AddProblemStatementComponent,
-      },
-      {
-        path: 'admin/add-problem',
-        component: AddProblemStatementComponent,
-      },
-      {
-        path: 'admin',
-        component: ManageProblemsComponent,
-      },
-      {
-        path: 'problems/:id',
-        component: IdeEnvironmentComponent,
-      },
-      {
-        path: 'problems',
-        component: IdeEnvironmentComponent,
-      },
-      {
-        path: 'compiler',
-        component: CompilerComponent,
-      },
-      {
-        path: '',
-        component: IdeEnvironmentComponent,
-      },
-      {
-        path: '**',
-        component: NotFoundComponent,
-      },
-    ]),
+    RouterModule.forRoot(
+      [
+        {
+          path: 'admin/add-problem/:id',
+          component: AddProblemStatementComponent,
+        },
+        {
+          path: 'admin/add-problem',
+          component: AddProblemStatementComponent,
+        },
+        {
+          path: 'admin',
+          component: ManageProblemsComponent,
+        },
+        {
+          path: 'problems/:id',
+          component: IdeEnvironmentComponent,
+        },
+        {
+          path: 'problems',
+          component: IdeEnvironmentComponent,
+        },
+        {
+          path: 'compiler',
+          component: CompilerComponent,
+        },
+        {
+          path: '',
+          component: IdeEnvironmentComponent,
+        },
+        {
+          path: '**',
+          component: NotFoundComponent,
+        },
+      ],
+      { useHash: true }
+    ),
   ],
   providers: [
     { provide: LocationStrategy, useClass: PathLocationStrategy },
