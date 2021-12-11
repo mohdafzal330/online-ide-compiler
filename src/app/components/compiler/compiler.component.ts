@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { Language } from 'src/app/models/LanguageModel';
@@ -6,6 +7,7 @@ import { ListModel } from 'src/app/models/ListModel';
 import { Theme } from 'src/app/models/ThemeModel';
 import { CommonService } from 'src/app/services/common-services/common.service';
 import { IdeService } from 'src/app/services/ide-services/ide.service';
+import { ConfimComponent } from '../confim/confim.component';
 
 @Component({
   selector: 'app-compiler',
@@ -29,7 +31,8 @@ export class CompilerComponent implements OnInit {
   public statusCode: number = -1;
   constructor(
     private _ideService: IdeService,
-    private _commonService: CommonService
+    private _commonService: CommonService,
+    private _dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -58,6 +61,40 @@ export class CompilerComponent implements OnInit {
     this._commonService.showLoading();
     this.isExecuting = true;
     this.execute();
+  }
+  private counter: number = 0;
+  public resetEditorCode(): void {
+    const dialogRef = this._dialog.open(ConfimComponent);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        //this code is just for to make a change in default script
+        // so that angular can detect changes with ' '
+        if (this.counter % 2 == 0) {
+          this.selectedLanguage.defaultScript += ' ';
+          this.counter = 1;
+        } else {
+          this.selectedLanguage.defaultScript =
+            this.selectedLanguage.defaultScript.trim();
+          this.counter = 0;
+        }
+      }
+    });
+  }
+  goFullScreen() {
+    const element = document.getElementById('editor') as HTMLElement & {
+      mozRequestFullScreen(): Promise<void>;
+      webkitRequestFullscreen(): Promise<void>;
+      msRequestFullscreen(): Promise<void>;
+    };
+    if (element?.requestFullscreen) {
+      element.requestFullscreen();
+    } else if (element.webkitRequestFullscreen) {
+      /* Safari */
+      element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) {
+      /* IE11 */
+      element.msRequestFullscreen();
+    }
   }
 
   private execute() {

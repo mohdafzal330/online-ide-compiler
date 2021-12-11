@@ -24,7 +24,7 @@
             </mat-select>
           </mat-form-field>
         </div>
-        <div class="col-2">
+        <div class="col-1">
           <mat-form-field appearance="standard" class="font-dr">
             <mat-label>Font size</mat-label>
             <mat-select [(value)]="selectedFont">
@@ -33,6 +33,26 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
+        </div>
+        <div class="col-1">
+          <span class="cursor-pointer">
+            <i
+              class="fa fa-refresh m-4"
+              aria-hidden="true"
+              matTooltip="Reset to default"
+              (click)="resetEditorCode()"
+            ></i>
+          </span>
+        </div>
+        <div class="col-1">
+          <span class="cursor-pointer">
+            <i
+              class="fa fa-arrows-alt mt-4"
+              aria-hidden="true"
+              matTooltip="Full screen"
+              (click)="goFullScreen()"
+            ></i>
+          </span>
         </div>
       </div>
     </div>
