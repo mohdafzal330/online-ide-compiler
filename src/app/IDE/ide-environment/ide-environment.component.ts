@@ -58,9 +58,19 @@ export class IdeEnvironmentComponent implements OnInit {
   }
 
   goFullScreen() {
-    var elem = document.getElementById('editor');
-    if (elem?.requestFullscreen) {
-      elem.requestFullscreen();
+    const element = document.getElementById('editor') as HTMLElement & {
+      mozRequestFullScreen(): Promise<void>;
+      webkitRequestFullscreen(): Promise<void>;
+      msRequestFullscreen(): Promise<void>;
+    };
+    if (element?.requestFullscreen) {
+      element.requestFullscreen();
+    } else if (element.webkitRequestFullscreen) {
+      /* Safari */
+      element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) {
+      /* IE11 */
+      element.msRequestFullscreen();
     }
   }
 
