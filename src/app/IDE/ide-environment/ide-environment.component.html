@@ -79,10 +79,19 @@
         <div class="col-1">
           <span class="cursor-pointer">
             <i
+              class="fa fa-refresh m-4"
+              aria-hidden="true"
+              matTooltip="Reset to default"
+              (click)="resetEditorCode()"
+            ></i>
+          </span>
+        </div>
+        <div class="col-1">
+          <span class="cursor-pointer">
+            <i
               class="fa fa-arrows-alt m-4"
               aria-hidden="true"
               matTooltip="Full screen"
-              matTooltipPosition="right"
               (click)="goFullScreen()"
             ></i>
           </span>

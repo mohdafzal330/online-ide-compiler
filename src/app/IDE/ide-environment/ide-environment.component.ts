@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { finalize } from 'rxjs/operators';
+import { ConfimComponent } from 'src/app/components/confim/confim.component';
 import { Language } from 'src/app/models/LanguageModel';
 import { ListModel } from 'src/app/models/ListModel';
 import { ProblemDetail } from 'src/app/models/ProblemDetailMode';
@@ -39,6 +41,7 @@ export class IdeEnvironmentComponent implements OnInit {
     private _ideService: IdeService,
     private _commonService: CommonService,
     private _activatedRoute: ActivatedRoute,
+    private _dialog: MatDialog,
     private _senitizer: DomSanitizer
   ) {}
 
@@ -150,12 +153,33 @@ export class IdeEnvironmentComponent implements OnInit {
     this.setStatusCode(-1);
     this.toggleIOContainer(true);
   }
-  private loadDefaultScript(): void {
+  public counter: number = 0; //TODO: search for another aporach
+  public loadDefaultScript(): void {
+    const t = this.defaultScript;
     this.defaultScript =
       (this.selectedLanguage.languageCode == 'java'
         ? this.problem.defaultScript
         : this.selectedLanguage.defaultScript ?? '') ??
       DefaultLanguageCodes.java;
+
+    //this code is just for to make a change in default script
+    // so that angular can detect changes with ' '
+    if (this.counter % 2 == 0) {
+      this.defaultScript += ' ';
+      this.counter = 1;
+    } else {
+      this.counter = 0;
+    }
+  }
+
+  public resetEditorCode(): void {
+    const dialogRef = this._dialog.open(ConfimComponent);
+    dialogRef.afterClosed().subscribe(result=>{
+      if(result){
+        this.loadDefaultScript();
+      }
+
+    })
   }
 
   public toggleIOContainer(close: boolean = false): void {
