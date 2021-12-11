@@ -76,6 +76,17 @@
             </mat-select>
           </mat-form-field>
         </div>
+        <div class="col-1">
+          <span class="cursor-pointer">
+            <i
+              class="fa fa-arrows-alt m-4"
+              aria-hidden="true"
+              matTooltip="Full screen"
+              matTooltipPosition="right"
+              (click)="goFullScreen()"
+            ></i>
+          </span>
+        </div>
         <div class="row" *ngIf="defaultScript">
           <div class="col-12">
             <app-code-editor

@@ -32,6 +32,7 @@ import { IdeEnvironmentComponent } from './IDE/ide-environment/ide-environment.c
 import { AdminService } from './services/admin/admin.service';
 import { CommonService } from './services/common-services/common.service';
 import { IdeService } from './services/ide-services/ide.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +66,7 @@ import { IdeService } from './services/ide-services/ide.service';
     MatPaginatorModule,
     MatSnackBarModule,
     MatProgressBarModule,
+    MatTooltipModule,
     RouterModule.forRoot(
       [
         {

@@ -57,6 +57,13 @@ export class IdeEnvironmentComponent implements OnInit {
     });
   }
 
+  goFullScreen() {
+    var elem = document.getElementById('editor');
+    if (elem?.requestFullscreen) {
+      elem.requestFullscreen();
+    }
+  }
+
   private getProblemDetail(problemId: number): void {
     if (!problemId || problemId <= 0) {
       return;
