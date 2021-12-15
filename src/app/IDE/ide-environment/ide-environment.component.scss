@@ -29,6 +29,10 @@
 }
 .content {
   max-height: 626px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+.content:hover {
   overflow-y: scroll;
   overflow-x: auto;
 }
