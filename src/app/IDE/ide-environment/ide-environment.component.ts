@@ -67,12 +67,13 @@ export class IdeEnvironmentComponent implements OnInit {
       msRequestFullscreen(): Promise<void>;
     };
     if (element?.requestFullscreen) {
+      // chrome
       element.requestFullscreen();
     } else if (element.webkitRequestFullscreen) {
-      /* Safari */
+      // Safari
       element.webkitRequestFullscreen();
     } else if (element.msRequestFullscreen) {
-      /* IE11 */
+      // IE11
       element.msRequestFullscreen();
     }
   }
@@ -174,12 +175,11 @@ export class IdeEnvironmentComponent implements OnInit {
 
   public resetEditorCode(): void {
     const dialogRef = this._dialog.open(ConfimComponent);
-    dialogRef.afterClosed().subscribe(result=>{
-      if(result){
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
         this.loadDefaultScript();
       }
-
-    })
+    });
   }
 
   public toggleIOContainer(close: boolean = false): void {

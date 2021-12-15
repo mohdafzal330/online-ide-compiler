@@ -109,103 +109,97 @@
         </div>
       </div>
     </div>
-    <div class="row fixed-bottom bg-light">
-      <div class="col-6"></div>
-      <div class="col-6">
-        <div class="row io-container" *ngIf="showIOContainer">
-          <div class="col-11">
-            <mat-tab-group
-              animationDuration="0ms"
-              [(selectedIndex)]="selectedIOContainerTab"
-            >
-              <mat-tab label="INPUT">
-                <textarea
-                  [(ngModel)]="problem.sampleTestCase.input"
-                  class="input-area m-2"
-                  cols="78"
-                  rows="7"
-                >
-                </textarea>
-              </mat-tab>
-              <mat-tab label="OUTPUT">
-                <textarea class="output-area m-2" cols="81" rows="6" disabled>{{
-                  output
-                }}</textarea>
-              </mat-tab>
-            </mat-tab-group>
-          </div>
-          <div class="col-1">
-            <i
-              (click)="toggleIOContainer()"
-              class="fa fa-chevron-down mt-3 p-1 cursor-pointer"
-            ></i>
-          </div>
+  </div>
+  <div class="row">
+    <div class="col-6"></div>
+    <div class="col-6 ide-fixed-bottom bg-light">
+      <div class="row io-container" *ngIf="showIOContainer">
+        <div class="col-11">
+          <mat-tab-group
+            animationDuration="0ms"
+            [(selectedIndex)]="selectedIOContainerTab"
+          >
+            <mat-tab label="INPUT">
+              <textarea
+                [(ngModel)]="problem.sampleTestCase.input"
+                class="input-area m-2"
+                cols="78"
+                rows="7"
+              >
+              </textarea>
+            </mat-tab>
+            <mat-tab label="OUTPUT">
+              <textarea class="output-area m-2" cols="81" rows="6" disabled>{{
+                output
+              }}</textarea>
+            </mat-tab>
+          </mat-tab-group>
         </div>
-        <div class="row mtb-10">
-          <div class="col-6">
-            <button mat-button color="primary" (click)="toggleIOContainer()">
-              Console
-              <i
-                class="fa fa-chevron-up console-icon"
-                [ngClass]="{ 'fa-chevron-up': !showIOContainer }"
-                [ngClass]="{ 'fa-chevron-down': showIOContainer }"
-              ></i>
-            </button>
-            <ng-container *ngIf="isExecuting">
-              <div
-                class="spinner-grow text-primary loading-icons"
-                role="status"
-              >
-                <span class="sr-only">Loading...</span>
-              </div>
-              <div class="spinner-border loading-icons" role="status">
-                <span class="sr-only">Loading...</span>
-              </div>
-              <div
-                class="spinner-grow text-success loading-icons"
-                role="status"
-              >
-                <span class="sr-only">Loading...</span>
-              </div>
-            </ng-container>
-            <ng-container *ngIf="!isExecuting">
-              <span *ngIf="statusCode == 0" class="text-danger m-2 font-16">
-                <i class="fa fa-times-circle m-1"></i>
-                {{ status }}
-              </span>
-              <span *ngIf="statusCode == 1" class="green m-2 font-16">
-                <i class="fa fa-check-circle m-1"></i>
-                {{ status }}
-              </span>
-              <span *ngIf="statusCode == 2" class="green m-2 font-16">
-                <i class="fa fa-check m-1"></i>
-                {{ status }}
-              </span>
-            </ng-container>
-          </div>
-          <div class="col-3">
-            <button
-              mat-raised-button
-              color="secondary"
-              class=""
-              (click)="run()"
-              [disabled]="isExecuting"
-            >
-              <i class="fa fa-play"></i>
-              COMPILE & RUN
-            </button>
-          </div>
-          <div class="col-2">
-            <button
-              mat-raised-button
-              color="accent"
-              class="submit-btn"
-              [disabled]="isExecuting"
-              (click)="run(false)"
-            >
-              <i class="fa fa-check-circle submit-icon"></i> SUBMIT
-            </button>
-          </div>
+        <div class="col-1">
+          <i
+            (click)="toggleIOContainer()"
+            class="fa fa-chevron-down mt-3 p-1 cursor-pointer"
+          ></i>
+        </div>
+      </div>
+      <div class="row mtb-10">
+        <div class="col-6">
+          <button mat-button color="primary" (click)="toggleIOContainer()">
+            Console
+            <i
+              class="fa fa-chevron-up console-icon"
+              [ngClass]="{ 'fa-chevron-up': !showIOContainer }"
+              [ngClass]="{ 'fa-chevron-down': showIOContainer }"
+            ></i>
+          </button>
+          <ng-container *ngIf="isExecuting">
+            <div class="spinner-grow text-primary loading-icons" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-border loading-icons" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-success loading-icons" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="!isExecuting">
+            <span *ngIf="statusCode == 0" class="text-danger m-2 font-16">
+              <i class="fa fa-times-circle m-1"></i>
+              {{ status }}
+            </span>
+            <span *ngIf="statusCode == 1" class="green m-2 font-16">
+              <i class="fa fa-check-circle m-1"></i>
+              {{ status }}
+            </span>
+            <span *ngIf="statusCode == 2" class="green m-2 font-16">
+              <i class="fa fa-check m-1"></i>
+              {{ status }}
+            </span>
+          </ng-container>
+        </div>
+        <div class="col-3">
+          <button
+            mat-raised-button
+            color="secondary"
+            class=""
+            (click)="run()"
+            [disabled]="isExecuting"
+          >
+            <i class="fa fa-play"></i>
+            COMPILE & RUN
+          </button>
+        </div>
+        <div class="col-2">
+          <button
+            mat-raised-button
+            color="accent"
+            class="submit-btn"
+            [disabled]="isExecuting"
+            (click)="run(false)"
+          >
+            <i class="fa fa-check-circle submit-icon"></i> SUBMIT
+          </button>
         </div>
       </div>
     </div>
