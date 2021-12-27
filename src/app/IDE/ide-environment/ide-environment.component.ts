@@ -58,6 +58,15 @@ export class IdeEnvironmentComponent implements OnInit {
       const problemId = params?.id ?? 11;
       this.getProblemDetail(problemId);
     });
+    this.editorchangeNotifier.subscribe((code) => {
+      if(!this.problem || this.selectedLanguage.languageCode!=='java'){
+        return;
+      }
+      this._commonService.setInLocalStorage(
+        'problem_code_' + this.problem.id,
+        code
+      );
+    });
   }
 
   goFullScreen() {
@@ -154,22 +163,30 @@ export class IdeEnvironmentComponent implements OnInit {
     this.setStatusCode(-1);
     this.toggleIOContainer(true);
   }
+
   public counter: number = 0; //TODO: search for another aporach
+
   public loadDefaultScript(): void {
-    const t = this.defaultScript;
-    this.defaultScript =
-      (this.selectedLanguage.languageCode == 'java'
-        ? this.problem.defaultScript
-        : this.selectedLanguage.defaultScript ?? '') ??
-      DefaultLanguageCodes.java;
+    const cacheCode = this._commonService.getFromLocalStorage(
+      'problem_code_' + this.problem.id
+    );
+    if (this.selectedLanguage.languageCode==='java' && cacheCode) {
+      this.defaultScript = cacheCode;
+    } else if (this.selectedLanguage.languageCode==='java' && this.problem.defaultScript) {
+      this.defaultScript = this.problem.defaultScript;
+    } else if (this.selectedLanguage.defaultScript) {
+      this.defaultScript = this.selectedLanguage.defaultScript;
+    } else {
+      this.defaultScript = DefaultLanguageCodes.java;
+    }
 
     //this code is just for to make a change in default script
     // so that angular can detect changes with ' '
-    if (this.counter % 2 == 0) {
+    if (this.counter % 2 == 1) {
       this.defaultScript += ' ';
-      this.counter = 1;
-    } else {
       this.counter = 0;
+    } else {
+      this.counter = 1;
     }
   }
 

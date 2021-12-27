@@ -7,6 +7,7 @@ import { ListModel } from 'src/app/models/ListModel';
 import { Theme } from 'src/app/models/ThemeModel';
 import { CommonService } from 'src/app/services/common-services/common.service';
 import { IdeService } from 'src/app/services/ide-services/ide.service';
+import { DefaultLanguageCodes } from 'src/app/shared/constants/ide-constants';
 import { ConfimComponent } from '../confim/confim.component';
 
 @Component({
@@ -29,6 +30,7 @@ export class CompilerComponent implements OnInit {
   public output: string = '';
   public status: string = '';
   public statusCode: number = -1;
+  public defaultScript: string = '';
   constructor(
     private _ideService: IdeService,
     private _commonService: CommonService,
@@ -42,6 +44,12 @@ export class CompilerComponent implements OnInit {
     this.setLanguage();
     this.setTheme();
     this.setFontSize();
+    this.loadDefaultScript();
+    this.editorchangeNotifier.subscribe((code) => {
+      if (this.selectedLanguage.languageCode === 'java'){
+        this._commonService.setInLocalStorage('compiler_code', code);
+      }
+    });
   }
 
   public onLaguageChange(e: any): void {
@@ -52,9 +60,34 @@ export class CompilerComponent implements OnInit {
       'codePlanetLanguage',
       this.selectedLanguage.languageCode
     );
+    this.loadDefaultScript();
     this.setOutput('');
     this.setStatus('');
     this.setStatusCode(-1);
+  }
+
+  public counter: number = 0; //TODO: search for another aporach
+
+  public loadDefaultScript(): void {
+    const cacheCode = this._commonService.getFromLocalStorage(
+      'compiler_code'
+    );
+    if (cacheCode && this.selectedLanguage.languageCode==='java') {
+      this.defaultScript = cacheCode;
+    }else if (this.selectedLanguage.defaultScript) {
+      this.defaultScript = this.selectedLanguage.defaultScript;
+    } else {
+      this.defaultScript = DefaultLanguageCodes.java;
+    }
+
+    //this code is just for to make a change in default script
+    // so that angular can detect changes with ' '
+    if (this.counter % 2 == 1) {
+      this.defaultScript += ' ';
+      this.counter = 0;
+    } else {
+      this.counter = 1;
+    }
   }
 
   public run() {
@@ -62,7 +95,6 @@ export class CompilerComponent implements OnInit {
     this.isExecuting = true;
     this.execute();
   }
-  private counter: number = 0;
   public resetEditorCode(): void {
     const dialogRef = this._dialog.open(ConfimComponent);
     dialogRef.afterClosed().subscribe((result) => {
@@ -74,7 +106,7 @@ export class CompilerComponent implements OnInit {
           this.counter = 1;
         } else {
           this.selectedLanguage.defaultScript =
-            this.selectedLanguage.defaultScript.trim();
+            this.selectedLanguage.defaultScript?.trim();
           this.counter = 0;
         }
       }
